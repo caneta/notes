@@ -160,13 +160,13 @@ user@host $ echo "a=${a}"
 a=3
 
 # To add a user (duable only being root, or having administrative privileges):
-adduser candini
+adduser myUser
 
 # After a user creation, to obtain the root privileges:
-adduser candini admin
+adduser myUser admin
 
 # To create an ssh tunnel:
-ssh -R 1234:localhost:5433 candini@eoservice
+ssh -R 1234:localhost:5433 myUser@myHost
 
 # Test if port 1234 is opened properly:
 netstat -tunap | grep 1234
