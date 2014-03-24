@@ -1,0 +1,7 @@
+set nocompatible
+echo "HARD WAY!"
+set numberwidth=4
+set number
+
+map - ddp
+map _ ddk<S-p>

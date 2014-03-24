@@ -1,0 +1,1267 @@
+################################################################################################# {
+###
+### Unordered Notes
+###
+
+# Open a new tab in Vim
+:tabnew
+
+# Switching between tabs from left to right
+gt
+
+# Switching between tabs from right to left
+gT
+
+# To add or subtract units in Vim
+<C-a>, <C-x>
+
+# To replace a "_" with a "\_" in a portion of file with Vim (:'<,'>s/_/\\_/gc)
+1 - Select lines with: "Shift-v"
+2 - Type ":"      # Launch a command
+3 - Type "s/"     # command for substitution
+4 - Type "_/\\_/" # The first "\" is an escape character for the second "\"
+5 - Type "gc"     # "g" stands for all the occurences on the same line, "c" to have a confirmation request
+
+# Rotate two vertical splitted windows to the left
+<C-w>R
+
+# To open gvim with one file per tab
+gvim -p file_1.cpp file_2 &
+
+# To open gvim at a specific line
+gvim file.cpp +1234
+
+# To get the selected characters to upper/lower case:
+gU
+gu
+
+# To launch a command on every line of a file:
+:1,$ s/candini/caneta/g
+
+# To delete ^M characters with vim:
+- select piece of text you want to change
+- type ":s/"
+- type <C-V><C-M>
+- finish string with "/g"
+- you will get ":s/^M//g"
+- press return to substitute
+
+# Save and close every window/tab:
+:wqa
+
+# Open a new tab with filename given, searching the 'path' to find it
+:tabf fileName
+
+# Close i-th tab:
+:tabc i
+
+# Close all other tabs (show only the current tab)
+:tabonly
+
+# To serch for something missing some character: (processing)
+/proc.....g
+
+# To switch between folded, unfolded text:
+zi
+
+# Move up and down in Normal Mode:
+Up one line:   <C-e>
+Down one line: <C-y>
+Up ½ page:     <C-u>
+Down ½ page:   <C-d>
+Up one page:   <C-b>
+Down one page: <C-f>
+
+# Move the cursor:
+Center of screen: zz
+Top of screen:    zt
+Bottom of screen: zb
+
+# Perform an external bash list command inside Vim:
+:!ls
+
+# Put a file inside the current file:
+:r  myfile.txt
+
+# Put an external command output inside the current file:
+:r !ls -lh
+
+# Replace mode is like the insert mode, but every typed character deletes an existing character:
+R
+
+# Setting options:
+:set ic           # ignore case when searching for something
+:set hls is       # highlight all matching phrases and show partial matches for a search phrase
+:set noic         # disable ignoring case
+:set nohlsearch   # disable highlight
+
+# Jump from one window to another:
+<C-w><C-w>
+
+# To follow a link and go back in the user manual:
+<C-]><C-o>
+
+# Add a blank line below without leaving normal mode:
+:pu =''
+
+# Add a blank line above without leaving normal mode:
+:pu! =''
+
+# A better way off adding a blank line below or above is:
+o<Esc>
+O<Esc>
+# But the best is installing Tim Pope unimpaired plugin, see below
+
+# Open a buffer already opened in an horizontal or vertical split:
+:sbuffer [N]
+:vert sb [N]
+
+# Auto indent an xml file:
+gg=G
+
+# Come back to the last cursor position:
+''
+
+###
+### Unordered Notes
+###
+################################################################################################# }
+
+################################################################################################# {
+###
+### Reading "Practical Vim" by Drew Neil - 2013
+###
+
+# Launch vim without considering .vimrc configuration:
+vim -u NONE -N
+
+# Indent every line below the cursor
+>G
+
+# End of the line and insert mode (2 ways):
+$a
+A
+
+# Delete/change from the cursor to the start/end of line (starting from Normal Mode):
+d^ or d
+c0
+
+d$
+c$
+
+# Delete/change from the cursor to the end of the word:
+de
+ce
+
+# Delete/change 2 words:
+d2w
+c2w
+
+# Delete 2 lines:
+2dd
+
+# Delete a character:
+dl
+
+# Delete a paragraph:
+dap
+
+# Convert the following word to upper case:
+gUaw
+
+# Convert next 3 characters to upper case:
+gU3l
+
+# Make a whole paragraph upper case:
+gUap
+
+# Convert a line to upper case:
+gUU
+
+# Convert to upper case up to the first occurrence of 'D' (including and not including it):
+gUfD
+gUtD
+
+# Toggle the current character to Upper/Lower case:
+~
+
+# Delete back one word (works also in the bash shell):
+<C-w>
+
+# Delete back to start of line (works also in the bash shell):
+<C-u>
+
+# If you are in insert mode, you can switch to Normal Mode with:
+<C-[>
+# or to Insert Normal Mode with:
+<C-o>
+
+# Joins the current and the next lines togheter:
+J
+
+# The opposite of J becomes K if you add the following to .vimrc:
+:nnoremap K i<CR><Esc>
+
+# If you have a blank space, you can emulate K with:
+r<CR>
+
+# Yank to a character, for example a ',':
+yt,
+
+# In Insert Mode, paste from register 0:
+<C-r>0
+
+# Expression register to perform some arithmetic (from insert mode):
+<C-r>=6*35<CR>
+
+# See digraph table:
+:h digraph-table
+
+# View unicode values for the symbol under the cursor:
+ga
+
+# Insert accented vowels (with decimal values and with digraphs):
+à --> <C-v>224 --> <C-k>a! --> città --> (accento grave)
+è --> <C-v>232 --> <C-k>e! --> cioè ---> (accento grave, suono aperto)
+é --> <C-v>233 --> <C-k>e' --> perché -> (accento acuto, suono chiuso)
+ì --> <C-v>236 --> <C-k>i! --> così ---> (accento grave)
+ò --> <C-v>242 --> <C-k>o! --> perciò -> (accento grave)
+ù --> <C-v>249 --> <C-k>u! --> più ----> (accento grave)
+
+# Some example digraph:
+␣ --> Open Box -----------------------------> <C-k>Vs
+▸ --> Black Right-Pointing Small Triangle --> <C-v>u25b8
+¬ --> Not sign -----------------------------> <C-k>NO
+® --> Registered ---------------------------> <C-k>Rg
+
+# Switch from Normal Mode to Replace Mode:
+R
+
+# Switch from Normal Mode to Virtual Replace Mode:
+gR
+
+# Toggle between Normal and Replace Mode:
+<Insert>
+
+# Select an entire word in Visual Mode:
+viw
+
+# Reselect the last visual selection:
+gv
+
+# Select 2 words back:
+vbb
+
+# Visually select inside the tag:
+vit
+
+# Uppercase inside the tag:
+gUit
+
+# Replace every single character in a 5x3 selection block with a pipe:
+<C-v>l5j3r|
+
+# Add a semicolon at the end of 3 lines (starting position is at the end of the first line in Normal Mode):
+<C-v>jj$A;<Esc>
+
+# Put a semicolon at the end of every line:
+:%norm A;
+
+# Append at the end of the current word:
+ea
+
+# Append at the end of the previous word
+gea
+
+# Delete line 3 in Normal Mode and in Command Line Mode:
+3Gdd
+:3d
+
+# Print from the current line to the end of the file:
+:.,$p
+
+# Print every line of the file:
+:1,$p
+:%p
+
+# Print the first 3 lines from the current one:
+:.,.+3p
+
+# Copy line 6 to just below the current line:
+:6t.
+
+# Comment out an entire file:
+:%norm i//
+:%norm i#
+
+# Decomment an entire file:
+:%s/\/\///
+
+# Get suggestions/autocompletion of Ex Commands:
+<C-d>
+
+# In Ex Mode, copy the word (WORD) under the cursor and inserts it at the command line prompt:
+<C-r><C-w>
+<C-r><C-a>
+
+# Open the command-line window with history of searches/Ex commands:
+q/
+q:
+
+# Switch from Command-Line mode to the command-line window:
+<C-f>
+
+# Put in the current file the working directory:
+:r !pwd
+
+# Order a list of data with sort, starting from the second line:
+:2,$!sort
+
+# See open buffers:
+:ls
+
+# Close the current buffer:
+:bd
+
+# Toggle between opened buffers (look below at the unimpaired plugin by Tim Pope also):
+<C-^>
+
+# Adding files to the argument list:
+:args file1 file2
+
+# Open every css and js file in current dir and its subdirs:
+:args **/*.css **/*.js
+
+# Open files in a certain order (fill the .chapters file with files in the order you want):
+:args `cat .chapters`
+
+# Split the current window horizontally/vertically:
+<C-w>s
+<C-w>v
+
+# Split the current window horizontally/vertically, loading file1 into the new window:
+:sp file1
+:vsp file1
+
+# Cycle between open windows:
+<C-w>w
+
+# Focus the window to the left, below, above or to the right:
+<C-w>h
+<C-w>j
+<C-w>k
+<C-w>l
+
+# Move current window to to the far left, very bottom, very top or to the far right:
+<C-w>H
+<C-w>J
+<C-w>K
+<C-w>L
+
+# Rotate windows (Up/left and Down/right):
+<C-w>r
+<C-w>R
+
+# Close the active window:
+<C-w>c
+:cl
+
+# Keep only the active window, closing all others:
+<C-w>o
+:on
+
+# Set the working directory for the current window:
+:lcd /path/to/my/dir
+
+# Set the working directory for every window of the current tab:
+:windo lcd /path/to/my/dir
+
+# Moves the current window into a new tab page:
+<C-w>T
+
+# Open filename in a new tab:
+:tabe filename
+
+# Close the current tab page and all of its windows:
+:tabc
+
+# Keep the active tab page, closing all others:
+:tabo
+
+# Switch to tab page number {N}:
+{N}gt
+
+# Print working directory:
+:pwd
+
+# Open a file with relative path:
+:e src/example.c
+
+# Open a file in the same directory as the current one:
+:e %:h<Tab>file.c
+
+# Mapping for %:h<Tab> as %% can be achieved in .vimrc:
+:e %%file.c
+
+# Changing .vimrc, you can open files in relative paths easily in current window, splits or tab with:
+\ew
+\es
+\ev
+\et
+
+# Add to path directory the app/ subdirectories to search with find command:
+:set path+=app/**
+
+# Find a file browsing into the path directory:
+:fin file.c
+
+# Open a file explorer with the netrw vim plugin (included in Vim distribution):
+:E
+
+# If we have NERDTree the following edit command open it, otherwise it does the same as the previous netrw command:
+:e.
+:sp.
+:vs.
+
+# Go back to the previous buffer and close netrw
+# (works only if netrw was opened with :e.)
+<C-^>
+
+# Open a file explorer with the netrw vim plugin in splitted windows:
+:Sex
+:Vex
+
+# To create a file open a netrw window and type:
+%
+
+# To create a directory open a netrw window and type:
+d
+
+# To rename a file open a netrw window and type:
+R
+
+# To delete a file open a netrw window and type:
+D
+
+# Echoes the name and status of the current file:
+<C-g>
+
+# Open the jump list:
+:jumps
+
+# Go to previous jump:
+<C-o>
+
+# Go to next jump:
+<C-i>
+
+# Jump to line number:
+[count]G
+
+# Jump to next/previous occurrence of pattern:
+//pattern<CR>/?pattern<CR>/n/N
+
+# Jump to matching parenthesis:
+%
+
+# Jump to start of previous/next sentence:
+(/)
+
+# Jump to start of previous/next paragraph:
+{/}
+
+# Jump to top/middle/bottom of screen:
+H/M/L
+
+# Jump to filename under the cursor:
+gf
+
+# Jump to definition of keyword under the cursor (reverse of command gf):
+<C-]>
+
+# Jump to a mark:
+'{mark}/`{mark}
+
+# Add a suffix to a file path (useful using the gf command):
+:set suffixesadd+=.rb
+
+# See the actual paths searched for the gf command:
+:set path?
+
+# Set path variable:
+:set path=.,/path/number/one,/path/number/two
+
+# List changes:
+:changes
+
+# Go to the previous change position (most recent modification):
+g;
+
+# Go to the next change position:
+g,
+
+# Return to the position of the last Insert:
+gi
+
+# Set a local mark:
+m{lowercase_letter}
+
+# Set a global mark:
+m{uppercase_letter}
+
+# Set global mark for .vimrc file and use it:
+mV
+`V
+
+# Invert a blank space with the next character:
+F␣xp
+
+# Yank (copy) a word (the cursor can be anywhere on the word):
+yiw
+
+# Delete (cut) a word (the cursor can be anywhere on the word):
+diw
+
+# Yank the current word into register a:
+"ayiw
+
+# Paste the word from register a:
+"ap
+
+# See the content of unnamed and yank registers:
+:reg "0
+
+# Paste from the yank register:
+"0P
+
+# Delete text without overwriting the unnamed register:
+"_diw
+
+# Paste into vim from the system clipboard (normal and insert modes):
+"+p
+<C-r>+
+
+# Copy from vim into the system clipboard:
+"+yiw
+
+# See vim version features:
+:version
+
+# Print current filename using the "current file register":
+"%p
+
+# Replace a word with the previous yanked one:
+vep
+
+# Paste content of the unnamed register (insert mode):
+<C-r>"
+
+# Paste content of the yank register (insert mode):
+<C-r>0
+
+# If I have yanked one or more lines, I can put them befor or after
+# the current line, leaving the cursor at the end of the pasted text:
+gp
+gP
+
+# Record in register a the macro "add 'var' in front of each line and a semicolon at the end":
+qaIvar␣<Esc>A;<Esc>q
+
+# Executing that macro on a second and third line:
+@a
+@@
+
+# Append a "j" motion at the end of a macro saved in register a:
+qAjq
+
+# Revert all the changes made to the current buffer:
+:e!
+
+# Execute a macro on all the buffers in the argument list:
+:argdo normal @a
+
+# Create a variable, increment it and print it:
+:let i=0
+:let i += 1
+:echo i
+
+# Insert the i value inside file (insert mode):
+<C-r>=i<CR>
+
+# Create a numbered list of some lines:
+:let i=1<CR>qaI<C-r>=i<CR>) <Esc>:let i += 1<CR>qjVGnormal @a
+
+# Print content of the "a" register in a new line:
+:pu a
+
+# Put a line without carriage return inside the "a" register:
+0"ay$
+
+# Case insensitive/sensitive search:
+/dog\c
+/dog\C
+
+# Serch for css colors (\v stands for 'magic search'):
+/\v#(\x{6}|\x{3})
+
+# "Very magic" literal switch (better for regular expression search):
+/\vitem[0-9]
+
+# "Very nomagic" literal switch (better for verbatim search):
+/\Va.k.a.
+
+# Regular expression that matches duplicate words:
+/\v<(\w+)\_s+\1>
+
+# Search for whole word "the":
+/\v<the>
+
+# Replace every occurrence of FIRSTNAME LASTNAME into LASTNAME FIRSTNAME:
+/\v(%(And|D)rew) (Neil)
+:%s//\2, \1/g
+
+# Switch off highlight after a search:
+:noh
+
+# Match quoted strings (quotes included):
+/\v"[^"]+"
+
+# Match quoted strings (quotes excluded):
+/\v"\zs[^"]+\ze"
+
+# Search backward:
+?
+
+# Autocomplete the search field (to be used in verbatim searches):
+<C-r><C-w>
+
+# Count the matches for the current pattern or for an explicit one:
+:%s///gn
+:%s/myWordToCount//gn
+
+# Search for a word and position the cursor at the end of the word:
+/lang/e
+
+# Repeat the last search with an offset:
+//e
+
+# Search for "Xml" or "Xhtml" and make them upper case:
+/\vX(ht)?ml\C
+gU//e
+//<CR>.
+
+# Get single quoted words avoiding apostrophes and put each match inside the \1 capture register;
+# then substitute every match with the same word but double quoted:
+/\v'(([^']|'\w)+)'
+:%s//"\1"/g
+
+# Substitute a string on the entire buffer:
+:%s/going/rolling/g
+
+# Eyeball substitution:
+:%s/going/rolling/gc
+
+# Join every line replacing newlines with commas:
+:%s/\n/,
+
+# Paste last searched pattern:
+<C-r>/
+
+# Setting the search pattern:
+:let @/='Pragmatic Vim'
+
+# Setting contents of the a register:
+:let @a='Practical Vim'
+
+# Considering previous set commands, perform the substitution (register a passed by reference):
+:%s//\=@a/g
+
+# Repeat the previous line-wise substitution across the entire file (the same as :%&&):
+g&
+
+# Repeat the last substitute command with the same flags on the current line:
+:&&
+
+# Repeat the last substitute command with the same flags on a range of text:
+:'<,'>&&
+
+# Rearranging a 3 columns CSV using submatches:
+/\v^([^,]*),([^,]*),([^,]*)$
+:%s//\3,\2,\1
+
+# Promote header tags with arithmethic on the replacement (<h2> --> <h1>):
+/\v\<\/?h\zs\d
+:%s//\=submatch(0)-1/g
+
+# Create a dictionary data structure:
+:let swapper={"dog":"man","man":"dog"}
+:echo swapper["dog"]
+:echo swapper["man"]
+
+# Get the whole word man or the whole word dog:
+/\v(<man>|<dog>)
+
+# Swap man with dog and vice versa (using abolish.vim is smarter):
+:%s//\={"dog":"man","man":"dog"}[submatch(1)]/g
+
+# Match "Pragmatic" word searching for "Pragmatic Vim" string:
+/Pragmatic\ze Vim
+
+# Visualize the quickfix window (results of vimgrep):
+:copen
+
+# Delete every line with a tag:
+/\v\<\/?\w+>
+:g//d
+
+# Delete each line that doesn't contain "href":
+:v/href/d
+
+# Show me where you catch the word "TODO":
+:g/TODO
+
+# Clean the a register and check it:
+qaq
+:reg a
+
+# Yank the TODO comments into the a register and paste them:
+:g/TODO/yank A
+"ap
+
+# Copy TODO lines at the end of the file:
+:g/TODO/t$
+
+# Sort selected lines:
+:'<,'>sort
+
+# Put rules of a CSS file in alphabetical order:
+:g/{/ .+1,/}/-1 sort
+
+# Indent lines inside braces of a CSS file (muting > output with :sil):
+:g/{/sil .+1,/}/-1 >
+
+# Create a ctags index for some ruby files:
+ctags *.rb
+
+# Inspect the where Vim looks for the tag file:
+:set tags?
+
+# Create a ctags index manually:
+:!ctags -R
+
+# Ctags: move from keyword under the cursor to its definition (and back)
+<C-]>
+<C-t>
+
+# Ctags: if a keyword has multiple matches use
+g<C-]>
+
+# Ctags: other useful commands to navigate into multiple matches:
+:tselect           # Prompt user to choose an item from the tag match list
+:tnext
+:tprev
+:tfirst
+:tlast
+:tag {keyword}     # Jump to the first tag that matches {keyword}
+:tjump {keyword}   # Like tag but for multiple matching
+:tjump /phone$     # regex used: every keyword ending with 'phone'
+
+# Compile without leaving Vim, jumping to the first error:
+:make
+
+# Compile without leaving Vim, without jumping to the first error:
+:make!
+
+# Get back to where we were before we ran make:
+<C-o>
+
+# Browse the quickfix list (it's global, so it's the same for every open window):
+:cnext   # Jump to the next item
+:cprev   # Jump to the previous item
+:cfirst  # Jump to the first item
+:clast   # Jump to the last item
+:cnfile  # Jump to first item in next file
+:cpfile  # Jump to last item in next file
+:cc N    # Jump to nth item
+:copen   # Open the quickfix list window
+:close   # Close the quickfix list window
+
+# Browse the location list (it's window bounded, so it's different for every open window):
+:lnext   # Jump to the next item
+:lprev   # Jump to the previous item
+:lfirst  # Jump to the first item
+:llast   # Jump to the last item
+:lnfile  # Jump to first item in next file
+:lpfile  # Jump to last item in next file
+:ll N    # Jump to nth item
+:lopen   # Open the quickfix list window
+:llose   # Close the quickfix list window
+
+# Recall an older version of the quickfix list (undo):
+:colder
+
+# Revert from an older quickfix list (redo):
+:cnewer
+
+# Install npm (package manager for Node.js):
+sudo apt-get install npm
+
+# Install nodelint and fix Ubuntu bug with a link:
+npm install nodelint -g
+sudo ln -s /usr/bin/nodejs /usr/bin/node
+
+# Configure :make to launch nodelint instead of gcc:
+:setlocal makeprg=NODE_DISABLE_COLORS=1\ nodelint\ %
+
+# Parse the output from nodelint:
+:setlocal efm=%A%f\,\ line\ %l\,\ character\ %c:%m,%Z.%#,%-G.%#
+
+# Launch nodelint compiler:
+:make
+
+# Use grep inside Vim:
+:grep -i Waldo *
+
+# Install ack-grep:
+sudo apt-get install ack-grep
+sudo ln -s /usr/bin/ack-grep /usr/local/bin/ack
+
+# Launch ack:
+ack --nogroup --column Waldo *
+
+# Make ":grep" call ack
+:set grepprg=ack\ --nogroup\ --column\ $*
+:set grepformat=%f:%l:%c:%m
+
+# Vim search and vimgrep:
+/\v'(([^']|'\w)+)'
+:vimgrep /<C-r>// **
+
+# Vim's autocomplete methods (Insert Mode):
+<C-p>        # Previous generic keyword
+<C-n>        # Next generic keyword
+<C-x><C-n>   # Current buffer keywords
+<C-x><C-i>   # Included file keywords (for libraries!)
+<C-x><C-]>   # Tags file keywords
+<C-x><C-k>   # Dictionary look up
+<C-x><C-l>   # Whole line completion
+<C-x><C-f>   # Filename completion
+<C-x><C-o>   # Omni-completion
+
+# Commands for the autocomplete pop-up menu:
+<C-n>        # Use the next match from the word list
+<C-p>        # Use the previous match from the word list
+<C-y>        # Accept the currently selected match
+<C-e>        # Revert to the original typed text
+<C-h>        # Delete one character from current match
+<C-l>        # Add one character from current match
+
+# Filter the word list in real time:
+<C-n><C-p>
+
+# Change working directory and get back:
+:cd
+:cd -
+
+# Activate omni-completion inside .vimrc:
+set nocompatible
+filetype plugin on
+
+# See omni-completion support:
+:h compl-omni-filetypes
+:h new-omni-completion
+
+# Enable and disable spell checker:
+:set spell
+:set nospell
+
+# Normal Mode commands for operating Vim's spell checker:
+]s    # Jump to next spelling error
+[s    # Jump to previous spelling error
+z=    # Suggest corrections for current word
+1z=   # I'm confident that the first correction will be correct
+zg    # Add current word to spell file
+zw    # Remove current word from spell file
+zug   # Revert zg or zw command for current word
+
+# Change language dictionary:
+:set spelllang=it
+
+# Set spell files:
+setlocal spellfile=~./vim/spell/it.utf-8.add
+setlocal spellfile+=/my/personal/path/oddButCorrectWords.utf-8.add
+
+# Add to the first or to the second spell file:
+1zg
+2zg
+
+# Use spelling autocompletion:
+<C-x>s
+<C-x><C-s>
+
+# Write the file and exit Vim:
+:x
+
+# See Vim available options:
+:h option-list
+
+# Enable an option:
+:set ignorecase
+
+# Disable an option ("no" prefix):
+:set noignorecase
+
+# Toggle the option:
+:set ignorecase!
+
+# Find out what the option is currently set to:
+:set ignorecase?
+
+# Reset ooption to default setting:
+:set ignorecase&
+
+# Set an option only on the current buffer:
+:setlocal tabstop=4
+
+# Set an option to all existing buffers:
+:bufdo setlocal tabstop=4
+
+# Set an option for every window:
+:windo setlocal number
+
+# Apply a settings file to the current buffer:
+:source two-space-indent.vim
+
+# Edit .vimrc file:
+:edit $MYVIMRC
+
+# Load edited .vimrc file without leaving Vim:
+:source $MYVIMRC
+:so %               # If .vimrc is the active buffer
+
+###
+### Reading "Practical Vim" by Drew Neil - 2013
+###
+################################################################################################# }
+
+################################################################################################# {
+###
+### Reading "Learn Vimscript the Hard Way" by Steve Losh - 2014
+###
+
+echo: $MYVIMRC
+:help echo
+
+echo: "Hello world!"
+echom: "Hello again world!"
+:messagges
+
+:set number
+:set nonumber
+:set number!
+:set number?
+:set numberwidth=4
+:set numberwidth?
+:set wrap?
+:set shiftround?
+:set matchtime?
+:set number! numberwidth=4
+
+vim -u NONE -N
+:map - x
+:map - dd
+:map <space> viw
+:map <c-d> dd
+
+###
+### reading "Learn Vimscript the Hard Way" by Steve Losh - 2014
+###
+################################################################################################# }
+
+
+################################################################################################# {
+###
+### Vim Plugins 
+###
+
+# How to get your git plugins up to date:
+cd ~/.vim/bundle/plugin_to_update
+git pull
+
+# pathogen by Tim Pope (https://github.com/tpope/vim-pathogen)  - - - - - - - [
+mkdir -p ~/.vim/autoload ~/.vim/bundle; \
+curl -Sso ~/.vim/autoload/pathogen.vim \
+    https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim
+
+# Put in your .vimrc file the following:
+call pathogen#infect()
+syntax on
+filetype plugin indent on
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ]
+
+# commentary by Tim Pope (https://github.com/tpope/vim-commentary)  - - - - - [
+# Installation (having pathogen already installed):
+cd ~/.vim/bundle
+git clone git://github.com/tpope/vim-commentary.git
+
+# Comment/uncomment a line:
+gcc
+
+# Comment/uncomment a visual block:
+gc
+
+# Comment/uncomment a paragraph:
+gcap
+
+# To add comments for sql files, add to your .vimrc:
+autocmd FileType sql set commentstring=--\ %s
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ]
+
+# repeat by Tim Pope (https://github.com/tpope/vim-repeat)  - - - - - - - - - [
+# Installation (having pathogen already installed):
+cd ~/.vim/bundle
+git clone git://github.com/tpope/vim-repeat.git
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ]
+
+# surround by Tim Pope (https://github.com/tpope/vim-surround)  - - - - - - - [
+# Installation (having pathogen already installed):
+cd ~/.vim/bundle
+git clone git://github.com/tpope/vim-surround.git
+
+# Surround something selected in visual mode with double quotes:
+S"
+
+# 'With' cursor on a word, surround it with double quotes:
+ysiw"
+
+# Changing braces with brackets adding a space (cursor inside surrounded text):
+cs{[
+
+# Changing braces with brackets without adding a space (cursor inside surrounded text):
+cs}]
+
+# Change tag delimiters into single quotes (cursor inside surrounded text):
+cst'
+
+# To remove double quotes delimiters (cursor on one double quote):
+ds"
+
+# Surrond with an XML tag, lines selected with V
+S<p class="stuff">
+
+# Wrap an entire line in parentheses:
+yss)
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ]
+
+# abolish by Tim Pope (https://github.com/tpope/vim-abolish)  - - - - - - - - [
+# Installation (having pathogen already installed):
+cd ~/.vim/bundle
+git clone git://github.com/tpope/vim-abolish.git
+
+# Correct spelling errors:
+:Abolish {despa,sepe}rat{e,es,ed,ing,ely,ion,ions,or}  {despe,sepa}rat{}
+
+# Swap man with dog and vice versa:
+:%S/{man,dog}/{dog,man}/g
+
+# Substitute child to adult and children to adults:
+:S/child{,ren}/adult{,s}/g
+
+# Traform to MixedCase, camelCase, snake_case and UPPER_CASE:
+crm
+crc
+crs
+cru
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ]
+
+# unimpaired by Tim Pope (https://github.com/tpope/vim-unimpaired)  - - - - - [
+# Installation (having pathogen already installed):
+cd ~/.vim/bundle
+git clone git://github.com/tpope/vim-unimpaired.git
+
+# Add a blank line without leaving Normal Mode above or below the cursor:
+[<Space>
+]<Space>
+
+# Browse the argument list:
+[a   # :previous
+]a   # :next
+[A   # :first
+]A   # :last
+
+# Browse the buffer list (consider also core command <C-^>):
+[b   # :bprevious
+]b   # :bnext
+[B   # :bfirst
+]B   # :blast
+
+# Browse the quickfix list:
+[q   # :cprevious
+]q   # :cnext
+[Q   # :cfirst
+]Q   # :clast
+
+# Browse the location list:
+[l   # :lprevious
+]l   # :lnext
+[L   # :lfirst
+]L   # :llast
+
+# Browse the tag list:
+[t   # :tprevious
+]t   # :tnext
+[T   # :tfirst
+]T   # :tlast
+
+# Exchange the current line with the one above or below it:
+[e
+]e
+
+# Encode and decode XML and HTML
+[x
+]x
+
+# Encode and decode URLs:
+[u
+]u
+
+# Escape C string style:
+[y
+]y
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ]
+
+# visual-star-search by Drew Neil (https://github.com/nelstrom/vim-visual-star-search)  - - [
+# Installation (having pathogen already installed):
+cd ~/.vim/bundle
+git clone git://github.com/nelstrom/vim-visual-star-search.git
+
+# Now you can search for strings selected in visual mode, using * and #
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ]
+
+# qargs by Drew Neil (https://github.com/nelstrom/vim-qargs)  - - - - - - - - [
+# Installation (having pathogen already installed):
+cd ~/.vim/bundle
+git clone git://github.com/nelstrom/vim-qargs.git
+
+# Copy each file from the quickfix list into the argument list:
+:Qargs
+
+# Substitute "Pragmatic Vim" with "Practical Vim" only for files that returned a positive match:
+/Pragmatic\ze Vim
+:vimgrep /<C-r>// **/*.txt
+:Qargs | argdo %s//Practical/g | up
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ]
+
+# syntastic by scrooloose (https://github.com/scrooloose/syntastic) - - - - - [
+# Installation (having pathogen already installed):
+cd ~/.vim/bundle
+git clone https://github.com/scrooloose/syntastic.git
+
+# Check file syntax manually:
+:SyntasticCheck
+
+# Toggle between active and passive mode:
+:SyntasticToggleMode
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ]
+
+# exchange by Tom McDonald's (https://github.com/tommcdo/vim-exchange)  - - - [
+# Installation (having pathogen already installed):
+cd ~/.vim/bundle
+git clone git://github.com/tommcdo/vim-exchange.git
+
+# Swap two words (first operator on the first one and dot on the second one):
+cxiw
+.
+
+# Swap two lines:
+cxx
+.
+
+# Clear selection:
+cxc
+
+# Swap functions arguments (starting position on the first argument letter):
+cxi)
+.
+
+# Swap in visual mode (select the first and the second word):
+ve
+X
+ve
+X
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ]
+
+# NERDTree by Marty Grenfell (https://github.com/scrooloose/nerdtree) - - - - [
+# Installation (having pathogen already installed):
+cd ~/.vim/bundle
+git clone https://github.com/scrooloose/nerdtree.git
+
+# Activation inside a Vim session type
+:NERDTree
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ]
+
+###
+### Vim Plugins 
+###
+################################################################################################# }
+
+################################################################################################# {
+###
+### Vimperator, Firefox Vim Plugin
+###
+
+# See vimperator help:
+:h
+
+# Go to startup home page:
+gh
+
+# Show link hints to open in the current tab:
+f
+
+# Show link hints to open in another tab:
+F
+
+# Follow hint in the current tab:
+;o{hint}
+
+# Follow hint in another tab:
+;t{hint}
+
+# Go back to the previous page:
+<C-o>
+
+# Go further to the next page:
+<C-i>
+
+# Close the current tab:
+d
+
+# Go to the next/previous tab:
+gt
+gT
+
+# Go to the first/last tab:
+g0
+g$
+
+# Focus hints:
+;;
+
+# Focus last used input field:
+gi
+
+# Focus on address bar url:
+<C-l>
+
+# Focus on search engine:
+<C-k>
+
+# Move through search engines:
+<C-Up>
+<C-Down>
+
+###
+### Vimperator, Firefox Vim Plugin
+###
+########################################################################################################### }

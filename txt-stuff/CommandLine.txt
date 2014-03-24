@@ -1,0 +1,623 @@
+# Bash in .bashrc:
+alias ll='ls -lBFh --color=auto --group-directories-first'
+
+# To make PgUp/PgDown fuction activated (history navigation)
+bind '"\e[5~":history-search-backward'
+bind '"\e[6~":history-search-forward'
+
+# To alphabetically order lines in a file
+sort Acronyms.txt -o AcronymsOredered.txt
+
+# To search for a string, ignoring the case and recursively through files
+grep -ir string *
+
+# To check if directories needed already exist or not
+if [ -d "$LINK_OR_DIR" ]; then 
+    if [ -L "$LINK_OR_DIR" ]; then
+        # It is a symlink!
+        echo "Be careful! You have a symlink named Products here!"
+    else
+        # It's a directory! But is it empty or not?
+        if [ "$(ls -A $LINK_OR_DIR)" ]; then
+            rm -rv Products/output*
+            echo "Dir \"$LINK_OR_DIR\" cleaned."
+        else
+            echo "Dir \"$LINK_OR_DIR\" is Empty: cleaning not necessary."
+        fi
+    fi
+else
+    # Directory doesn't exists
+    mkdir $LINK_OR_DIR/ ;
+    mkdir ${prefixOutPath}/input ;
+    echo "Dir \"$LINK_OR_DIR\" created."
+
+# Using tar to create a package tar.gz
+tar cvzf myPackage.tar.gz myDir
+
+# Using tar to extract a package tar.gz
+tar xvzf myPackage.tar.gz
+
+# Extract a tar in the dir you want:
+tar -C /home/user/input/myDir/ -xvzf myPackage.tgz
+
+# See a version of a software in ubuntu
+dpkg -l gcc
+
+# To see library linked to an executable
+ldd executable
+
+# See a file statistics:
+stat myFile.txt
+
+# To see the dimension of the current directory
+du -sh .
+
+# Print a double variable
+printf "%f\n" ,034
+
+# Bc usage example
+myFunc(){
+cat << END | bc
+scale = 6
+a = $1 + 2
+a / 5
+END
+}
+
+a="$( myFunc 21 )"
+
+# Convert a decimal into an hexadecimal:
+echo "obase=16; 255" | bc
+
+# Select just the first character of a variable
+echo "${variable:0:1}"
+
+# Loop in one single line
+i="0" ; while [ ${i} -lt 2 ] ; do echo "Hello!" ; (( i = ${i} + 1)) ; done
+
+# Bash variable flags -z, -f, etc documentation
+man test
+
+# Redirecting standard output in a.txt and standard error in b.txt
+./stdoutAndstderr 1> a.txt 2> b.txt
+
+# List just files
+mv -f $( find ${WORKDIR} -type f ) ${INPUTDATASETDIR} 1>&2
+
+# To see when a file is filled
+tail -f nomefile
+
+# To see net situation:
+iftop
+
+# To verify if a file is corrupted
+if cat file.txt > /dev/null 2>&1 ; then echo "file is ok" ; else echo "file is corrupted" ; fi
+
+# Mount a shared directory in a Virtual Box linux host:
+mount -t vboxsf [-o OPTIONS] sharename mountpoint -o uid=1000,gid=1000
+
+# Install an rpm
+rpm -ivh package.rpm
+
+# To install local libraries (inside /usr/local/lib/):
+$ ./configure --prefix=/usr/local
+$ make
+# make install
+
+# Archiving preserving symlinks
+tar -h
+
+# How to crack a pdfconsidering only abcdefghilmnopqrstuvz characters
+pdfcrack -c abcdefghilmnopqrstuvz myPdf.pdf
+
+# To create a tar.bz2 file, maintaining symlinks:
+tar -jcf pappa.tar.bz2 pappamoscia/
+
+# To extract a tar.bz2 file:
+tar -jxvf myFile.tar.bz2
+
+# To see what's inside a tar.bz2:
+tar -tjvf file.tzr.bz2
+
+# To extrat only a part of the compressed archive:
+tar -jxvf packet.tar.bz2 --wildcards --no-anchored 'myFile.txt'
+
+# Loop a command every 5 seconds
+ while true ; do df -h | grep /dev/root | awk '{ print $4 }' ; sleep 5 ; done
+
+# Bash basename and dirname for paths:
+basename ${filePath}
+dirname ${filePath}
+dirname $( dirname ${filePath} )
+
+# Extract a tar.bz2 in the dir you want
+tar -xvjf myPackage.tar.bz2 -C myDir/
+
+# Obtain the Julian day with "date" command
+date +"%Y/%j" --date="2004-02-29"
+date +"%Y/%j" --date="20040229"
+date +"Julian Day: %j" --date="20060502"
+date +"%Y%m%d%H%M%S" # prints date with the pattern YYYYMMDDHHMMSS
+
+# Create an array without using a loop (every string obtained with find must be without blanks!)
+ARRAY=( $( find *.met ) )
+
+# Retrieve the integer part from a float number
+LON=49.345
+echo ${LON%%.*} # equal to 49
+
+# Create directories recursively
+mkdir -p dir1/subdir2/subdir3
+
+# Find only files bigger than 10 Mega Bytes
+find IMG* -size +10M
+
+# Variable indirect references:
+user@host $ a="b"
+user@host $ b="3"
+user@host $ eval a=\$${a}
+user@host $ echo "a=${a}"
+a=3
+
+# To add a user (duable only being root, or having administrative privileges):
+adduser candini
+
+# After a user creation, to obtain the root privileges:
+adduser candini admin
+
+# To create an ssh tunnel:
+ssh -R 1234:localhost:5433 candini@eoservice
+
+# Test if port 1234 is opened properly:
+netstat -tunap | grep 1234
+
+# To see which ports are opened:
+sudo nmap -sT -O localhost
+
+# Link between ports and services is in:
+/etc/services
+
+# To se directory tree structure:
+tree
+
+# To find a file:
+locate fileName
+
+# The username and group for web-server apache is:
+www-data
+
+# To add reading permissions to others:
+chown o+r directory/
+
+# The output of the first command is put inside brackets
+find . -iname \*.xsd -exec ls -l {} \;
+
+# To create an ssh tunnel to directly copy somthing through a machine
+# This way I get remote server access through my local 2234 port
+ssh localuser@localhost -L 2234:remoteServer:22
+
+# So now I can do something like ("remoteuser" is the username on remote machine remoteServer):
+scp -P 2234 packet.tgz remoteuser@localhost:
+
+# Web cache tool:
+polipo
+
+# To see services started
+netstat -tnlp
+
+# To validate an xsd using xmllint (you need the schema of schemas! i.e.: http://www.w3.org/2001/XMLSchema.xsd)
+xmllint --schema http://www.w3.org/2001/XMLSchema.xsd --valid basicService.xsd
+
+# To open a port use net cut:
+nc -l 1234
+# In another shell listen to that port:
+telnet localhost 1234
+# What you write in the second one is appearing in the first one
+
+# To avoid inserting the password, using sshfs
+echo "password" | sshfs user@host:/path/you/need localDirectory -o password_stdin
+
+# To avoid inserting the password, using ssh
+sshpass -p "${pass}" ssh ${user}@${host} "$*"
+#To use scp with sshpass
+sshpass -p "mypassword" scp something USER@HOST:
+
+# To create a tunnel in background and destroy it!
+sshpass -p "${pass}" ssh -N -R$DB_PORT:$DB_HOST:$DB_PORT ${user}@${host} &> /dev/null &
+pidtunnel="$!"
+kill -9 "$pidtunnel"
+
+# Print the number of elements of an array in bash
+echo "${#ARRAY[@]}"
+
+# Zip a directory:
+zip -r dir.zip dir/
+
+# List the content of a zip file
+unzip -l archive.zip
+# List the content of a tar file
+tar -tvf archive.tar
+# List the content of a tar.gz or tgz file
+tar -ztvf archive.tar.gz
+# List the content of a tar.bz2 file
+tar -jtvf archive.tar.bz2
+
+# Extract only one file from an archive (absolute path!)
+unzip -j archive.zip "*/myFileStart-*"
+
+# Extract only the matching part of a grep
+strings
+
+# Retrieve the readable strings of a binary file
+strings binaryFile | grep -Eo '[0-9][0-9][A-Z][a-z][a-z][0-9][0-9]'
+
+# Iterate on an array in bash
+names=( Jennifer Tonya Anna Sadie )
+
+for name in ${names[@]} ; do
+	echo $name
+done
+
+# Select the caracters you want from a string with cut
+echo 'mySTringToBeCutted' | cut -c 7-11
+
+# To see if there are name solving problems:
+nslookup ${MACHINE_IP_ADDRESS}
+
+# Find files modified in the last 4 days
+find /your/path -type f -mtime -4 -exec ls -al {} \;
+
+# Files older than 30 days but younger than 60
+find ./ -type f -mtime -60 ! -mtime -30 -exec ls -la {} \;
+
+# Configure VirtualBox shared Folder:
+1 - Set the shared folder through virtualbox preferences window, for example /home/user/VBCommon
+2 - Install Guest Additions on guest machine
+3 - Open a terminal into Windows guest (the virtual machine) and type:
+net use x: \\VBOXSVR\VBCommon
+
+# To create public and private key: copy the public into .ssh/authorized_keys
+# of the machines you want to connect...
+ssh-keygen -b 2048 -t rsa
+
+# Connect to a remote machine through ssh and do whatever you want without open a shell!
+# It is necessary to configure ssh without password before!!!
+/usr/bin/ssh -T postgres@${NEW_MASTER} /bin/touch ${TRIGGER_FILE}
+
+# Launch several command on a remote machine through ssh
+#!/bin/sh -x
+ssh -T postgres@192.168.0.127 touch /home/database/9.0.1/data/a.txt \
+				touch /home/database/9.0.1/data/b.txt \
+				touch /home/database/9.0.1/data/c.txt
+exit 0
+
+# xargs examples
+ls | xargs du -sh
+ls | xargs -n 2 file
+ls | xargs echo 
+ls | xargs -n 2 echo 
+ls | xargs -n 3 echo 
+ls | xargs -n 3 echo ciao 
+ls | xargs -n 3 -I '{}' echo {} ciao 
+find bin/ | xargs -I {} echo File \"{}\"
+ls | xargs -P 3 -n 3 echo
+seq 100  | xargs -P 3 -n 3 echo
+
+# Create a grid of ordered numbers, equally spaced
+seq -w 100 | xargs -n 10
+
+# Mount a shared Windows folder
+mount -t cifs //192.168.0.2/Users/Tom/Desktop/Public /mnt/myDev -o "rw,username=X,passwd=Y"
+
+# Mount a ramfs filesystem
+mount -t ramfs -o "rw,username=user,passwd=password" -o size=512M ramfs /my/mounted/dir
+
+# ACL (Access Control List)
+# To activate them, you have to mount the filesystem with acl option in /etc/fstab:
+/dev/sda3 /home           ext3    relatime,acl        0       2
+
+# To see how the ACL are setted:
+getfacl -e a.txt
+
+# To give read permission to user postgres:
+setfacl -m u:postgres:r a.txt
+
+# See "net processes"
+iftop
+nethogs
+
+# Perform a command every n seconds:
+watch -n 1 ls -lh
+
+# Usage of screen
+screen
+# press enter
+# launch a command, for example
+ls -l
+ctrl + a and d (not "ctrl + a and ctrl + d")
+exit
+# reattach with
+screen -r
+
+# To see detatched screens:
+screen -ls
+
+# To see shells opened with screen:
+Ctrl + a + "
+
+# Export a variable to get an executable see libraries you want:
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$(pwd)/lib
+
+# To make visible dynamic libraries during execution, create a file into:
+/etc/ld.so.conf.d
+
+# howto create a symbolic link
+ln -sfn linux-2.6.36-gentoo-r2 linux
+# if you want to remove only the link and not what are you pointing to, just use
+rm -v linux
+
+# Playing with fifos
+mkfifo myfifo
+cat file.txt > myfifo
+
+# Add a user to a group (in this case add user postgres to group www-data):
+adduser postgres www-data
+
+# Add writing permission to group of current directory
+chmod g+w .
+
+# Global executable paths uder Ubuntu ar in /etc/environment
+
+# Increase shared memory
+sysctl -w kernel.shmmax=17179869184
+
+# Modify shared memory IDs
+sysctl -w kernel.shmmni=8192
+
+# To allow 32 GB of shared memory:
+sudo sysctl -w kernel.shmmax=34359738368
+sudo sysctl -w kernel.shmall=8388608
+
+# Clean cache
+sudo su - -c "echo 1 > /proc/sys/vm/drop_caches"
+
+# Add a file to a zip file already existent
+zip packet.zip file_to_add
+
+# Extract a bzip2 packet, keeping the original file and redirecting the output to stdout
+bzip2 -dck packet.bz2
+
+# To use libcurl on Ubuntu install libcurl4-gnutls-dev
+
+# To pass a password to sudo from stdin:
+echo ${PASSWORD} | sudo -S command
+
+# To see how a machine is working with I/O
+iostat -mx 6
+
+# Show last reboot
+who -b
+
+# If I have a directory structure like I="/a/b/c/2009/127"
+# where 2009 is the year YYYY and 127 is the julian day DDD
+DDD="$( basename ${I} )"
+YYYY="$( basename `echo ${I} | awk -F /${DDD} '{ print $1}'` )"
+
+# From julian date to gregorian date (if day=012 you get errors: it must be day=12):
+day=235
+year=2007
+date -d "`date +${year} `-01-01 +$(( ${day} - 1 ))days" +%Y-%m-%d
+
+# Exec md5sum on every file of a directory
+find . -type f -exec md5sum {} \; > md5.txt
+
+# To mount in read/write mode an NTFS partition,
+# install fuse, ntfs3g and:
+mount -t ntfs-3g /dev/sdf1 /mnt/myDevice/ -o uid=1000,gid=1000
+
+# rsync for pictures:
+rsync -av /home/Foto/* user@host:/home/Foto
+rsync -av --delete /home/Foto/* user@192.168.0.105:/Users/user/Backups/Foto
+
+# Set hardware clock
+hwclock --show
+rm -v /etc/adjtime
+ntpdate time.ien.it
+hwclock --systohc
+
+# To mount everything reported in /etc/fstab (if unmounted) type as root:
+mount -a
+
+# To see device UUID (Universally Unique Identifier) type as root:
+blkid
+
+# To see what Linux Operative System is running
+cat /etc/issue
+
+# To encrypt a file with gnupg using default CAST5 algorithm:
+gpg -c file.txt
+# ...you are asked a passphrase twice
+
+# To decrypt a file with gnupg
+gpg file.txt.gpg
+# ... and enter your passphrase
+
+# Shutdown system after 90 minutes in Ubuntu:
+sudo shutdown -h +90
+
+# How to solve bash: /bin/rm: Argument list too long
+find . -type f | xargs rm
+find . -type f -exec rm {}
+
+# Convert an .ape file into a .wav one:
+/home/canduc/monkeyaudio/Source/mac CD_Image.ape CD_Image.wav -d
+
+# Split a wav file into several wav or flac files using the relative cue file:
+cuebreakpoints CD_Image.cue | shnsplit -o wav  CD_Image.wav
+cuebreakpoints CD_Image.cue | shnsplit -o flac CD_Image.wav
+
+# Convert a directory of wav files into flac files:
+flac ./*.wav
+
+# Add tags to every track:
+/usr/share/doc/cuetools-1.3.1-r1/extras/cuetag.sh CD_Image.cue split-track0*
+
+# Discover up ip adresses in a LAN
+for ip in $(seq 1 254); do ping -c 1 192.168.0.$ip>/dev/null; [ $? -eq 0 ] && echo "192.168.0.$ip UP" || : ; done
+
+# Set octave precision
+output_precision (2)
+
+# Sum a column of values stored in a text file:
+SUM="0" ; while read LINE ; do SUM=$( echo "${LINE}+${SUM}" | bc ) ; done < "a.txt" ; echo "Num. pti: ${SUM}"
+
+# To delete a user and its home in Ubuntu:
+userdel -r $USERNAME
+
+# Rename every file in a directory, modifying a common substring
+LIST=( $( ls ) ) ; for I in ${LIST[@]} ; do mv -v ${I} $( echo ${I} | sed 's/-10m//g' ) ; done
+
+# List one file per line and add "/" at the end of every directory:
+ls -1p
+
+# Convert a video from ogv to avi with mencoder
+mencoder video.ogv -ovc xvid -oac mp3lame -xvidencopts pass=1 -o video.avi
+
+# How to launch a GUI program with a virtual X server
+# xvfb-run run specified X client or command in a virtual X server environment
+#
+# host login with ssh -X:
+
+ssh -X user@host
+
+# optional: check if the DISPLAY variable is set correctly. a new console window must appear
+xterm -display $DISPLAY
+
+# Start a VM with VMWare
+cd /mnt/test/myMachine
+sudo xvfb-run --auto-servernum /usr/bin/vmplayer myMachine.vmx &
+
+# Convert a mov video into an mp4 one with mencoder
+mencoder input.mov -ovc xvid -oac mp3lame -xvidencopts fixed_quant=4 -o output.mp4
+
+# If you are not more able to become super user do the following (if you can use ssh)
+1 - connect to another machine
+2 - reconnect to your machine with a user who can become super user
+3 - become super user
+4 - type visudo
+5 - add to sudo conf file a line for your user, such as "user ALL=(ALL) ALL"
+6 - you are done
+
+# Give read, write and execution permission to a group on a directory:
+chmod g+rwx directory
+
+# Create an iso file:
+dd if=/dev/sr1 of=myImage.iso
+
+# See every tcp and udp connections
+netstat -tunap
+
+# Too see if port 80 responds
+links http://localhost
+
+# Mount and unmount with sshfs:
+sshfs user@host:/home/user/myRemoteDir myLocalDir
+fusermount -u myLocalDir
+
+# Add something at the end of every line if the file has \r (carriage return, DOS style)
+while read line ; do echo "$line myAddition"; done <<< "$(cat myFile | tr -d '\r')"
+
+# Count total number of lines in a C project (multiple .c files):
+TOT=0; for I in `ls *.c` ; do TOT=${TOT}+$(cat ${I} | wc -l); done; echo ${TOT} | bc
+# The same avoiding blank lines:
+TOT=0; for I in `ls *.c` ; do TOT=${TOT}+$(sed -e '/^\s*$/d' ${I} | wc -l); done; echo ${TOT} | bc
+# The same avoiding blank lines and commented lines:
+TOT=0; for I in `ls *.c` ; do TOT=${TOT}+$(sed -e '/^\s*#/d;/^\s*$/d' ${I} | wc -l); done; echo ${TOT} | bc
+
+# Move multiple files to the same target directory:
+mv -v file1 file2 file3 -t path/to/mydir/
+
+# Add 0 in front of decimal numbers obtained with bc:
+echo "4*0.1" | bc | sed 's/^\./0./'
+echo "x=4 * 0.1; if(x<1) print 0; x" | bc
+
+# Connect Nokia 6680 via bluetooth:
+obexfs -b 00:13:FD:F9:31:42 ~/Public
+
+# Backup contacts of Nokia 6680:
+syncml-ds-tool -u 0 --identifier "PC Suite Data Sync" --sync text/x-vcard Contacts --wbxml > backupCell.txt
+
+# Merge 2 avi files into 1 (avimerge belongs to transcode package):
+avimerge -i myMovie-CD1.avi myMovie-CD2.avi -o myMovie.avi
+
+# Create a png images with teem-unu (package teem-apps):
+teem-unu convert -i img.txt -t uchar -o hi.png
+# where img.txt is:
+0 0 0 0 0 0 0
+0 255 0 255 0 255 0
+0 255 255 255 0 255 0
+0 255 0 255 0 255 0
+0 0 0 0 0 0 0
+
+# Get the list of files and directory on a re mote ftp server:
+lftp -u ${USER},${PASSWORD} -e 'find /;bye' ${HOST} > file_list.txt
+
+# Merge several jpg images into one single pdf with imagemagick:
+convert img_01.jpg img_02.jpg img_03.jpg my_doc.pdf
+
+# Resize pictures
+find . -type f -name '*.jpg' -print0 | xargs -0 mogrify -scale 1280x960
+find . -type f -name '*.jpg' -print0 | xargs -0 mogrify -scale 500x375 # To put 4 picures in a A4
+
+# Modify PDF page size with imagemagick (convert command):
+convert -page a3 infile.pdf -page a4 outfile.pdf
+
+# Get original timestamp of a picture with exiftool
+exiftool picture.jpg | grep -i 'Date/Time Original'
+
+# See orientation of a picure with exiftool:
+exiftool DSCN5743.JPG | grep Orientation
+
+# Rotate 90 degrees clockwise a picture with exiftool:
+exiftool -Orientation=6 -overwrite_original -n picture.jpg
+
+# Rotate 270 degrees clockwise a picture with exiftool:
+exiftool -Orientation=8 -overwrite_original -n picture.jpg
+
+# Add a delay to connection:
+sudo tc qdisc add dev eth0 root netem delay 1000ms
+
+# Delete a delay to connection:
+sudo tc qdisc del dev eth0 root netem delay 1000ms
+
+# Create a patch:
+diff -u oldFile.txt newFile.txt > mods.diff
+# Apply a patch:
+patch < mods.diff
+# Restore patched file to original:
+patch -R < mods.diff
+
+# Create a patch and apply it with svn:
+svn diff myfile > myfile.diff
+patch -p0 -i myfile.diff
+
+# Put 2 textual files side by side:
+paste file1.txt file2.txt
+
+# Emulate a connection with netcat and telnet:
+sudo netcat -l 80   # from first terminal
+telnet localhost 80 # from second terminal
+
+# Upload a file on ftp remote host with ncftp and screen:
+screen
+# local ls (put an exclamation mark in front of the command):
+!ls
+ncftp ftp://myUser:myPassword@myHost/
+mput -R file
+# Detach from terminal:
+Ctrl+a d
+# Reconnect to terminal:
+screen -r
+
+# From a PDF file get the same but 2 pages every A4:
+pdfjam --nup 2x1 --suffix 2up --landscape --outfile . myFile.pdf

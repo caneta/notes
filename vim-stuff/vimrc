@@ -1,0 +1,60 @@
+set nocompatible
+filetype plugin on
+runtime macros/matchit.vim
+
+set number
+set ruler
+set hlsearch
+set ic
+set nrformats=
+set listchars=tab:▸\ ,eol:¬
+set list
+set history=200
+
+colorscheme koehler
+
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set expandtab
+set cursorline
+set incsearch
+set nobackup
+set noswapfile
+
+noremap <Up> <Nop>
+noremap <Down> <Nop>
+noremap <Left> <Nop>
+noremap <Right> <Nop>
+
+" Recalling commands from history (grey box at page 69 of Practical Vim by Drew Nail)
+cnoremap <C-p> <Up>
+cnoremap <C-n> <Down>
+
+" For pathogen plugin
+execute pathogen#infect()
+Helptags
+syntax on
+filetype plugin indent on
+
+" for commentary plugin:
+autocmd FileType sql set commentstring=--\ %s
+
+set mouse=nv
+
+nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
+
+" Shortcuts for opening file in same directory as current file
+cnoremap <expr> %% getcmdtype() == ':' ? escape(expand('%:h'), ' \').'/' : '%%'
+cnoremap %% <C-R>=expand('%:h').'/'<cr>
+map <leader>ew :e %%
+map <leader>es :sp %%
+map <leader>ev :vsp %%
+map <leader>et :tabe %%
+
+" Fix the & command in normal+visual modes
+nnoremap & :&&<Enter>
+xnoremap & :&&<Enter>
+
+" The opposite of J:
+:nnoremap K i<CR><Esc>
