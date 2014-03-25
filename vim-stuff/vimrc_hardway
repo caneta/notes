@@ -1,7 +1,15 @@
+echo "vimrc_hardway sourced!"
 set nocompatible
-echo "HARD WAY!"
 set numberwidth=4
 set number
 
-map - ddp
-map _ ddk<S-p>
+let mapleader = "-"
+let maplocalleader = "_"
+
+noremap <leader> ddp
+noremap <localleader> ddkP
+inoremap <c-u> <esc>viwUA
+nnoremap <c-u> viwUel
+
+nnoremap <leader>ev :vsplit vimrc_hardway<cr>
+nnoremap <leader>sv :source vimrc_hardway<cr>
