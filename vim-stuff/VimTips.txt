@@ -991,6 +991,7 @@ vim -u NONE -N
 
 :nnoremap -d dd
 :nnoremap -c ddO
+:let mapleader
 :let mapleader = "-"
 :nnoremap <leader>d dd
 :let maplocalleader = "\\"
@@ -1001,7 +1002,15 @@ vim -u NONE -N
 :nnoremap <leader>sv :source vimrc_hardway<cr> 
 
 :iabbrev adn and
-
+:iabbrev waht what
+:iabbrev then then
+:set iskeyword?
+:iabbrev @@ caneta@domain.com
+:iabbrev ccopy Copyright 2014 Caneta, all rights reserved.
+:inoremap ssig -- <cr>Caneta<cr>caneta@domain.com
+:iunmap ssig
+:iabbrev ssig -- <cr>Caneta<cr>caneta@domain.com
+:iunabbrev ssig
 
 ###
 ### reading "Learn Vimscript the Hard Way" by Steve Losh - 2014
