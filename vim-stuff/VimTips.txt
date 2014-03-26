@@ -119,8 +119,11 @@ O<Esc>
 # Auto indent an xml file:
 gg=G
 
-# Come back to the last cursor position:
+# Come back to the last line where the cursor was:
 ''
+
+# Come back to the last character where the cursor was:
+``
 
 ###
 ### Unordered Notes
@@ -1011,6 +1014,15 @@ vim -u NONE -N
 :iunmap ssig
 :iabbrev ssig -- <cr>Caneta<cr>caneta@domain.com
 :iunabbrev ssig
+
+:nnoremap jk dd
+:nunmap jk
+:nnoremap <leader>" viw<esc>a"<esc>hbi"<esc>lel
+:vnoremap <leader>" <esc>`<i"<esc>`>a"<esc>
+:nnoremap H ^
+:nnoremap L $
+
+
 
 ###
 ### reading "Learn Vimscript the Hard Way" by Steve Losh - 2014

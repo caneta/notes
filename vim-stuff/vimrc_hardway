@@ -3,8 +3,8 @@ set nocompatible
 set numberwidth=4
 set number
 
-let mapleader = "-"
-let maplocalleader = "_"
+"let mapleader = "-"
+"let maplocalleader = "_"
 
 "noremap <leader> ddp
 "noremap <localleader> ddkP
@@ -14,3 +14,6 @@ let maplocalleader = "_"
 nnoremap <leader>ev :vsplit vimrc_hardway<cr>
 nnoremap <leader>sv :source vimrc_hardway<cr>
 
+nnoremap <leader>" viw<esc>a"<esc>hbi"<esc>lel
+nnoremap H ^
+nnoremap L $
