@@ -125,6 +125,15 @@ gg=G
 # Come back to the last character where the cursor was:
 ``
 
+# Open every buffer opened in a different window:
+:ba
+
+# Open the first file in the buffer list, splitting the window horizontally:
+:sbf
+
+# Open the next file in the buffer list, splitting the window horizontally:
+:sbn
+
 ###
 ### Unordered Notes
 ###
