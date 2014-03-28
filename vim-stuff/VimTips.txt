@@ -134,6 +134,11 @@ gg=G
 # Open the next file in the buffer list, splitting the window horizontally:
 :sbn
 
+# The same as above, but splitting window vertically:
+:vert ba
+:vert sbf
+:vert sbn
+
 ###
 ### Unordered Notes
 ###
