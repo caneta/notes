@@ -145,6 +145,13 @@ gg=G
 # Tell vim where the ctags fle is:
 :set tags=~/Desktop/tags
 
+# Open definition in a horizontal split:
+<c-w><c-]>
+
+# Open definition in a vertical split:
+map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
+<a-]>
+
 ###
 ### Unordered Notes
 ###

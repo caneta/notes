@@ -58,3 +58,7 @@ xnoremap & :&&<Enter>
 
 " The opposite of J:
 :nnoremap K i<CR><Esc>
+
+" Set ctags stuff
+set tags+=~/Desktop/vimTags/tags
+map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
