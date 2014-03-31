@@ -1269,6 +1269,16 @@ ve
 X
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ]
 
+# tagbar by Jan Larres (https://github.com/majutsushi/tagbar) - - - - - - - - [
+# Installation (having pathogen already installed; you need ctags too):
+cd ~/.vim/bundle
+git clone https://github.com/majutsushi/tagbar
+
+# Open and close tagbar:
+:TagbarToggle
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ]
+
 # NERDTree by Marty Grenfell (https://github.com/scrooloose/nerdtree) - - - - [
 # Installation (having pathogen already installed):
 cd ~/.vim/bundle

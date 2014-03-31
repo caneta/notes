@@ -59,6 +59,9 @@ xnoremap & :&&<Enter>
 " The opposite of J:
 :nnoremap K i<CR><Esc>
 
+nnoremap <F7> :SyntasticToggleMode<CR>
+
 " Set ctags stuff
 set tags+=~/Desktop/vimTags/tags
 map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
+nnoremap <F8> :TagbarToggle<CR>
