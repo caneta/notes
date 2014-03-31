@@ -139,6 +139,12 @@ gg=G
 :vert sbf
 :vert sbn
 
+# Create a tags file with exuberant ctags:
+:!ctags -R -f ~/Desktop/tags ~/myRepo/
+
+# Tell vim where the ctags fle is:
+:set tags=~/Desktop/tags
+
 ###
 ### Unordered Notes
 ###
@@ -408,8 +414,8 @@ q:
 # Switch to tab page number {N}:
 {N}gt
 
-# Print working directory:
-:pwd
+# Print working directory for the current window:
+:pw
 
 # Open a file with relative path:
 :e src/example.c
