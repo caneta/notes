@@ -99,7 +99,7 @@ R
 <C-w><C-w>
 
 # To follow a link and go back in the user manual:
-<C-]><C-o>
+<C-]><C-t> # the same as ctags
 
 # Add a blank line below without leaving normal mode:
 :pu =''
