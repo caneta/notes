@@ -160,6 +160,11 @@ qa0f:d$q
 # Repeat that macro for lines selected in visual mode:
 :'<,'>normal @a
 
+# See the number of line selected in visual mode:
+g<c-g>
+
+
+
 ###
 ### Unordered Notes
 ###
@@ -259,12 +264,12 @@ yt,
 ga
 
 # Insert accented vowels (with decimal values and with digraphs):
-à --> <C-v>224 --> <C-k>a! --> città --> (accento grave)
-è --> <C-v>232 --> <C-k>e! --> cioè ---> (accento grave, suono aperto)
-é --> <C-v>233 --> <C-k>e' --> perché -> (accento acuto, suono chiuso)
-ì --> <C-v>236 --> <C-k>i! --> così ---> (accento grave)
-ò --> <C-v>242 --> <C-k>o! --> perciò -> (accento grave)
-ù --> <C-v>249 --> <C-k>u! --> più ----> (accento grave)
+à --> <C-v>224 --> <C-k>a! --> città --> (grave accent)
+è --> <C-v>232 --> <C-k>e! --> cioè ---> (grave accent, opened sound)
+é --> <C-v>233 --> <C-k>e' --> perché -> (acute accent, closed sound)
+ì --> <C-v>236 --> <C-k>i! --> così ---> (grave accent)
+ò --> <C-v>242 --> <C-k>o! --> perciò -> (grave accent)
+ù --> <C-v>249 --> <C-k>u! --> più ----> (grave accent)
 
 # Some example digraph:
 ␣ --> Open Box -----------------------------> <C-k>Vs
