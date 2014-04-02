@@ -416,6 +416,9 @@ q:
 # Set the working directory for the current window:
 :lcd /path/to/my/dir
 
+# Set the working directory for every window:
+:cd /path/to/my/dir
+
 # Set the working directory for every window of the current tab:
 :windo lcd /path/to/my/dir
 
@@ -516,8 +519,11 @@ D
 # Jump to top/middle/bottom of screen:
 H/M/L
 
-# Jump to filename under the cursor:
+# Jump to filename under the cursor (same window):
 gf
+
+# Jump to filename under the cursor (horizontal splitted window):
+<C-w>f
 
 # Jump to definition of keyword under the cursor (reverse of command gf):
 <C-]>
