@@ -152,6 +152,14 @@ gg=G
 map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 <a-]>
 
+# Register a macro that in the current line deletes
+# everything after a colon (two ways):
+qa0f:d$q
+:let @a="0f:d$"
+
+# Repeat that macro for lines selected in visual mode:
+:'<,'>normal @a
+
 ###
 ### Unordered Notes
 ###
