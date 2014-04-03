@@ -163,8 +163,6 @@ qa0f:d$q
 # See the number of line selected in visual mode:
 g<c-g>
 
-
-
 ###
 ### Unordered Notes
 ###
@@ -228,10 +226,10 @@ gUtD
 # Toggle the current character to Upper/Lower case:
 ~
 
-# Delete back one word (works also in the bash shell):
+# Delete back one word in insert mode (the same in bash):
 <C-w>
 
-# Delete back to start of line (works also in the bash shell):
+# Delete back to start of line in insert mode (the same in bash):
 <C-u>
 
 # If you are in insert mode, you can switch to Normal Mode with:
