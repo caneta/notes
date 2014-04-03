@@ -1066,8 +1066,6 @@ vim -u NONE -N
 :nnoremap H ^
 :nnoremap L $
 
-
-
 ###
 ### reading "Learn Vimscript the Hard Way" by Steve Losh - 2014
 ###
