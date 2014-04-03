@@ -32,10 +32,6 @@ inoremap <Down> <Nop>
 inoremap <Left> <Nop>
 inoremap <Right> <Nop>
 
-" Redefine esc key
-inoremap jk <esc>
-inoremap <esc> <nop>
-
 " Recalling commands from history (grey box at page 69 of Practical Vim by Drew Nail)
 cnoremap <C-p> <Up>
 cnoremap <C-n> <Down>
