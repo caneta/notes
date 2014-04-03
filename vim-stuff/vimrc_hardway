@@ -15,5 +15,18 @@ nnoremap <leader>ev :vsplit vimrc_hardway<cr>
 nnoremap <leader>sv :source vimrc_hardway<cr>
 
 nnoremap <leader>" viw<esc>a"<esc>hbi"<esc>lel
-nnoremap H ^
-nnoremap L $
+"nnoremap H ^
+"nnoremap L $
+inoremap jk <esc>
+inoremap <esc> <nop>
+
+" Disable arrows to move around
+nnoremap <Up> <Nop>
+nnoremap <Down> <Nop>
+nnoremap <Left> <Nop>
+nnoremap <Right> <Nop>
+inoremap <Up> <Nop>
+inoremap <Down> <Nop>
+inoremap <Left> <Nop>
+inoremap <Right> <Nop>
+

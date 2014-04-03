@@ -1066,6 +1066,17 @@ vim -u NONE -N
 :nnoremap H ^
 :nnoremap L $
 
+inoremap jk <esc>
+inoremap <esc> <nop>
+nnoremap <Up> <Nop>
+nnoremap <Down> <Nop>
+nnoremap <Left> <Nop>
+nnoremap <Right> <Nop>
+inoremap <Up> <Nop>
+inoremap <Down> <Nop>
+inoremap <Left> <Nop>
+inoremap <Right> <Nop>
+
 ###
 ### reading "Learn Vimscript the Hard Way" by Steve Losh - 2014
 ###

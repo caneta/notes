@@ -22,10 +22,19 @@ set incsearch
 set nobackup
 set noswapfile
 
-noremap <Up> <Nop>
-noremap <Down> <Nop>
-noremap <Left> <Nop>
-noremap <Right> <Nop>
+" Disable arrows to move around
+nnoremap <Up> <Nop>
+nnoremap <Down> <Nop>
+nnoremap <Left> <Nop>
+nnoremap <Right> <Nop>
+inoremap <Up> <Nop>
+inoremap <Down> <Nop>
+inoremap <Left> <Nop>
+inoremap <Right> <Nop>
+
+" Redefine esc key
+inoremap jk <esc>
+inoremap <esc> <nop>
 
 " Recalling commands from history (grey box at page 69 of Practical Vim by Drew Nail)
 cnoremap <C-p> <Up>
