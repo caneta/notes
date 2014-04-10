@@ -517,8 +517,9 @@ D
 # Jump to top/middle/bottom of screen:
 H/M/L
 
-# Jump to filename under the cursor (same window):
+# Jump to filename under the cursor and back (same window):
 gf
+<C-o>
 
 # Jump to filename under the cursor (horizontal splitted window):
 <C-w>f
