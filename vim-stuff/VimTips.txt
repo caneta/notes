@@ -163,6 +163,12 @@ qa0f:d$q
 # See the number of line selected in visual mode:
 g<c-g>
 
+# Find the line with the maximum number of columns:
+:echo max(map(range(1, line('$')), "col([v:val, '$'])")) - 1
+
+# Go to that line (the number is the columns number retrieved:
+/^.\{248\}$
+
 ###
 ### Unordered Notes
 ###
