@@ -601,6 +601,11 @@ patch -R < mods.diff
 svn diff myfile > myfile.diff
 patch -p0 -i myfile.diff
 
+# Other way to apply a patch
+patch --dry-run -p1 </mypatch.diff 
+## if ok 
+patch -p1 </mypatch.diff 
+
 # Put 2 textual files side by side:
 paste file1.txt file2.txt
 
