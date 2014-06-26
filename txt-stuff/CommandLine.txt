@@ -630,3 +630,8 @@ Ctrl+e: go to the end of the command line
 Ctrl+k: delete from cursor to the end of the command line
 Ctrl+u: delete from cursor to the start of the command line
 Ctrl+w: delete from cursor to start of word (i.e. delete backwards one word)
+# If the following does not work in Gnome Terminal apply the
+# following workaround: Edit -> Keyboard shortcuts. Untick "Enable menu
+# access keys (such as Alt+F to open the File menu). Press Close.
+Alt+b: move backward one word (or go to start of word the cursor is currently on)
+Alt+f: move forward one word (or go to end of word the cursor is currently on)
