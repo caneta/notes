@@ -42,6 +42,8 @@ Helptags
 syntax on
 filetype plugin indent on
 
+" autocmd vimenter * NERDTree
+
 " for commentary plugin:
 autocmd FileType sql set commentstring=--\ %s
 
@@ -67,21 +69,29 @@ xnoremap & :&&<Enter>
 nnoremap <F7> :SyntasticToggleMode<CR>
 
 " Set ctags stuff
-set tags+=~/Desktop/vimTags/tags
+set tags+=~/Desktop/vimTags/mw_tags,~/Desktop/vimTags/ui_tags,~/Desktop/vimTags/sources_tags
 map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 nnoremap <F8> :TagbarToggle<CR>
 
-" Debugging stuff
-nnoremap <leader>db ologger.debug(":::::::::::: START ::::::::::::")
-           \<cr>logger.debug()
-           \<cr>logger.debug("::::::::::::  END  ::::::::::::")
-           \<cr><esc>kkf(a
+" Setting working directory and path for Akab2 repo
+cd ~/Desktop/AkCanetaSshfs/
+set path+=~/Desktop/AkCanetaSshfs/code/**
 
-" Folding settings
+" Debugging stuff
+:nnoremap <leader>db ologger.debug(":::::::::::: START ::::::::::::")
+            \<cr>logger.debug()
+            \<cr>logger.debug("::::::::::::  END  ::::::::::::")
+            \<cr><esc>kkf(a
+:nnoremap <leader>dbj oconsole.log(":::::::::::: START ::::::::::::");
+            \<cr>console.log();
+            \<cr>console.log("::::::::::::  END  ::::::::::::");
+            \<cr><esc>kkf(a
+
+"folding settings
 set foldmethod=indent   "fold based on indent
-set foldnestmax=10      "deepest fold is 10 levels
-set nofoldenable        "dont fold by default
-set foldlevel=1
+set foldnestmax=2       "deepest fold is 2 levels
+set nofoldenable        "don't fold by default
+"set foldlevel=2
 
 " Using JsHint with Synthastic plugin
 let g:syntastic_javascript_checkers = ['jshint']
