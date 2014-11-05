@@ -73,7 +73,7 @@ set tags+=~/Desktop/vimTags/mw_tags,~/Desktop/vimTags/ui_tags,~/Desktop/vimTags/
 map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 nnoremap <F8> :TagbarToggle<CR>
 
-" Setting working directory and path for Akab2 repo
+" Setting working directory and path for custom repo
 cd ~/Desktop/AkCanetaSshfs/
 set path+=~/Desktop/AkCanetaSshfs/code/**
 
