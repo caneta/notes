@@ -635,3 +635,9 @@ Ctrl+w: delete from cursor to start of word (i.e. delete backwards one word)
 # access keys (such as Alt+F to open the File menu). Press Close.
 Alt+b: move backward one word (or go to start of word the cursor is currently on)
 Alt+f: move forward one word (or go to end of word the cursor is currently on)
+
+# Remove open JDK and install the Oracle one on Ubuntu:
+sudo apt-get purge openjdk*
+sudo add-apt-repository ppa:webupd8team/java
+sudo apt-get update
+sudo apt-get install oracle-java8-installer
