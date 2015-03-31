@@ -1,12 +1,12 @@
 set nocompatible
 filetype plugin on
+" Make % command switch for opening/closed if-else
 runtime macros/matchit.vim
 
 set number
 set ruler
 set hlsearch
-set ic
-set nrformats=
+set ignorecase
 set listchars=tab:▸\ ,eol:¬
 set list
 set history=200
