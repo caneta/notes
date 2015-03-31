@@ -2,6 +2,8 @@ set nocompatible
 filetype plugin on
 " Make % command switch for opening/closed if-else
 runtime macros/matchit.vim
+" Set title in terminal window
+set title
 
 set number
 set ruler
@@ -9,7 +11,7 @@ set hlsearch
 set ignorecase
 set listchars=tab:▸\ ,eol:¬
 set list
-set history=200
+set history=1000
 
 colorscheme koehler
 
