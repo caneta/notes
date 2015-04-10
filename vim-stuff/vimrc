@@ -15,6 +15,15 @@ set history=1000
 
 colorscheme koehler
 
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set expandtab
+set cursorline
+set incsearch
+set nobackup
+set noswapfile
+
 " Only do this part when compiled with support for autocommands
 if has("autocmd")
     " Enable file type detection
@@ -32,15 +41,6 @@ if has("autocmd")
     " Treat .rss files as XML
     autocmd BufNewFile,BufRead *.rss setfiletype xml
 endif
-
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
-set expandtab
-set cursorline
-set incsearch
-set nobackup
-set noswapfile
 
 " Disable arrows to move around
 nnoremap <Up> <Nop>
@@ -97,14 +97,14 @@ nnoremap <F8> :TagbarToggle<CR>
 " set path+=~/Desktop/myDir/code/**
 
 " Debugging stuff
-:nnoremap <leader>db ologger.debug(":::::::::::: START ::::::::::::")
-            \<cr>logger.debug()
-            \<cr>logger.debug("::::::::::::  END  ::::::::::::")
-            \<cr><esc>kkf(a
-:nnoremap <leader>dbj oconsole.log(":::::::::::: START ::::::::::::");
-            \<cr>console.log();
-            \<cr>console.log("::::::::::::	END  ::::::::::::");
-            \<cr><esc>kkf(a
+" :nnoremap <leader>db ologger.debug(":::::::::::: START ::::::::::::")
+"             \<cr>logger.debug()
+"             \<cr>logger.debug("::::::::::::  END  ::::::::::::")
+"             \<cr><esc>kkf(a
+" :nnoremap <leader>dbj oconsole.log(":::::::::::: START ::::::::::::");
+"             \<cr>console.log();
+"             \<cr>console.log("::::::::::::	END  ::::::::::::");
+"             \<cr><esc>kkf(a
 
 "folding settings
 set foldmethod=indent	"fold based on indent
@@ -114,6 +114,9 @@ set nofoldenable		"don't fold by default
 
 " Using JsHint with Synthastic plugin
 let g:syntastic_javascript_checkers = ['jshint']
+
+" Avoiding 'Hit enter to continue' message over scp
+let g:netrw_silent=1
 
 " Strip trailing whitespaces
 nnoremap <silent> <F5> :call <SID>StripTrailingWhitespaces()<CR>
