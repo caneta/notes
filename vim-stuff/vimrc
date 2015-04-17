@@ -1,5 +1,3 @@
-execute pathogen#infect() "For pathogen plugin
-
 set nocompatible
 set title " Set title in terminal window
 set number " line numbers
@@ -12,6 +10,7 @@ set history=1000
 set mouse=nv
 set cursorline
 set incsearch
+set ic
 set nobackup
 set noswapfile
 set foldmethod=indent   "fold based on indent
@@ -23,13 +22,14 @@ set softtabstop=4
 set shiftwidth=4
 set expandtab
 
+colorscheme molokai " from https://github.com/tomasr/molokai
+
 filetype on " Enable file type detection
 filetype plugin on
 filetype plugin indent on
 
 syntax on
 runtime macros/matchit.vim " Make % command switch for opening/closed if-else
-colorscheme molokai " from https://github.com/tomasr/molokai
 
 " Syntax of these languages is fussy over tabs Vs spaces
 autocmd FileType make setlocal ts=8 sts=8 sw=8 noexpandtab
@@ -43,6 +43,7 @@ autocmd FileType javascript setlocal ts=4 sts=4 sw=4 noexpandtab
 autocmd BufNewFile,BufRead *.rss setfiletype xml " Treat .rss files as XML
 autocmd BufNewFile,BufRead *.ftl setfiletype freemarker
 
+""" Remaps -----------------------
 " Disable arrows to move around
 nnoremap <Up> <Nop>
 nnoremap <Down> <Nop>
@@ -71,30 +72,39 @@ map <leader>et :tabe %%
 nnoremap & :&&<Enter>
 xnoremap & :&&<Enter>
 
-:nnoremap K i<CR><Esc> " The opposite of J:
-
-" nnoremap <F7> :SyntasticToggleMode<CR>
-
-" Set ctags stuff
-" set tags+=~/Desktop/vimTags/mw_tags,~/Desktop/vimTags/ui_tags,~/Desktop/vimTags/sources_tags
-" map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
-
-" Setting working directory and path for custom repo
-" cd ~/Desktop/myDir/
-" set path+=~/Desktop/myDir/code/**
-
-" Debugging stuff
-" :nnoremap <leader>db ologger.debug(":::::::::::: START ::::::::::::")
-"             \<cr>logger.debug()
-"             \<cr>logger.debug("::::::::::::  END  ::::::::::::")
-"             \<cr><esc>kkf(a
-" :nnoremap <leader>dbj oconsole.log(":::::::::::: START ::::::::::::");
-"             \<cr>console.log();
-"             \<cr>console.log("::::::::::::	END  ::::::::::::");
-"             \<cr><esc>kkf(a
+nnoremap K i<CR><Esc> " The opposite of J:
 
 " Strip trailing whitespaces
 nnoremap <silent> <F5> :call <SID>StripTrailingWhitespaces()<CR>
+
+""" Plugin settings -----------------------
+execute pathogen#infect() " For pathogen plugin
+
+" netrw: avoiding 'Hit enter to continue' message over scp
+let g:netrw_silent=1
+let g:netrw_liststyle=3
+
+" vim-commentary:
+autocmd FileType sql set commentstring=--\ %s
+
+" syntastic: using JsHint as JavaScript linter
+if $PATH !~ "\.nvm"
+    let $PATH="/home/services/.nvm/versions/node/v0.12.2/bin:" . $PATH
+endif
+nnoremap <F7> :SyntasticToggleMode<CR>
+let g:syntastic_javascript_checkers = ['jshint']
+
+" airline status bar
+set laststatus=2
+" let g:airline#extensions#tabline#enabled = 1
+" let g:airline_theme='light'
+let g:airline_powerline_fonts=1
+
+" webdevicons: icons for file types in airline status bar
+set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Plus\ Nerd\ File\ Types\ 11
+let g:webdevicons_enable_nerdtree = 0
+
+""" Function definitions -----------------------
 function <SID>StripTrailingWhitespaces()
     " Preparation: save last search, and cursor position.
     let _s=@/
@@ -106,15 +116,3 @@ function <SID>StripTrailingWhitespaces()
     let @/=_s
     call cursor(l, c)
 endfunction
-
-" Plugin settings -----------------------
-" netrw: avoiding 'Hit enter to continue' message over scp
-let g:netrw_silent=1
-let g:netrw_liststyle=3
-
-" vim-commentary:
-autocmd FileType sql set commentstring=--\ %s
-
-" syntastic: using JsHint as JavaScript linter
-let g:syntastic_javascript_checkers = ['jshint']
-
