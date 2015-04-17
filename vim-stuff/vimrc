@@ -63,11 +63,9 @@ syntax on
 
 filetype plugin indent on
 
-" for commentary plugin:
-autocmd FileType sql set commentstring=--\ %s
-
 set mouse=nv
 
+" Set ctr-l to clean up last search match highlight
 nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
 
 " Shortcuts for opening file in same directory as current file
@@ -88,9 +86,8 @@ xnoremap & :&&<Enter>
 nnoremap <F7> :SyntasticToggleMode<CR>
 
 " Set ctags stuff
-set tags+=~/Desktop/vimTags/mw_tags,~/Desktop/vimTags/ui_tags,~/Desktop/vimTags/sources_tags
+" set tags+=~/Desktop/vimTags/mw_tags,~/Desktop/vimTags/ui_tags,~/Desktop/vimTags/sources_tags
 map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
-nnoremap <F8> :TagbarToggle<CR>
 
 " Setting working directory and path for custom repo
 " cd ~/Desktop/myDir/
@@ -107,16 +104,10 @@ nnoremap <F8> :TagbarToggle<CR>
 "             \<cr><esc>kkf(a
 
 "folding settings
-set foldmethod=indent	"fold based on indent
-set foldnestmax=2		"deepest fold is 2 levels
-set nofoldenable		"don't fold by default
+set foldmethod=indent   "fold based on indent
+set foldnestmax=2       "deepest fold is 2 levels
+set nofoldenable        "don't fold by default
 "set foldlevel=2
-
-" Using JsHint with Synthastic plugin
-let g:syntastic_javascript_checkers = ['jshint']
-
-" Avoiding 'Hit enter to continue' message over scp
-let g:netrw_silent=1
 
 " Strip trailing whitespaces
 nnoremap <silent> <F5> :call <SID>StripTrailingWhitespaces()<CR>
@@ -131,4 +122,15 @@ function <SID>StripTrailingWhitespaces()
     let @/=_s
     call cursor(l, c)
 endfunction
+
+" Plugin settings -----------------------
+" netrw: avoiding 'Hit enter to continue' message over scp
+let g:netrw_silent=1
+let g:netrw_liststyle=3
+
+" vim-commentary:
+autocmd FileType sql set commentstring=--\ %s
+
+" syntastic: using JsHint as JavaScript linter
+let g:syntastic_javascript_checkers = ['jshint']
 
