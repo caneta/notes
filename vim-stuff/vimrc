@@ -1,3 +1,4 @@
+""" General settings -----------------------
 set nocompatible
 set title " Set title in terminal window
 set number " line numbers
@@ -43,6 +44,7 @@ autocmd FileType javascript setlocal ts=4 sts=4 sw=4 noexpandtab
 autocmd BufNewFile,BufRead *.rss setfiletype xml " Treat .rss files as XML
 autocmd BufNewFile,BufRead *.ftl setfiletype freemarker
 
+
 """ Remaps -----------------------
 " Disable arrows to move around
 nnoremap <Up> <Nop>
@@ -77,8 +79,10 @@ nnoremap K i<CR><Esc> " The opposite of J:
 " Strip trailing whitespaces
 nnoremap <silent> <F5> :call <SID>StripTrailingWhitespaces()<CR>
 
+
 """ Plugin settings -----------------------
-execute pathogen#infect() " For pathogen plugin
+" For pathogen plugin
+execute pathogen#infect()
 
 " netrw: avoiding 'Hit enter to continue' message over scp
 let g:netrw_silent=1
@@ -87,7 +91,7 @@ let g:netrw_liststyle=3
 " vim-commentary:
 autocmd FileType sql set commentstring=--\ %s
 
-" syntastic: using JsHint as JavaScript linter
+" syntastic: JsHint as JavaScript linter (with Node Version Manager too!)
 if $PATH !~ "\.nvm"
     let $PATH="/home/services/.nvm/versions/node/v0.12.2/bin:" . $PATH
 endif
@@ -103,6 +107,7 @@ let g:airline_powerline_fonts=1
 " webdevicons: icons for file types in airline status bar
 set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Plus\ Nerd\ File\ Types\ 11
 let g:webdevicons_enable_nerdtree = 0
+
 
 """ Function definitions -----------------------
 function <SID>StripTrailingWhitespaces()
