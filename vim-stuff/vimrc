@@ -1,46 +1,47 @@
-set nocompatible
-filetype plugin on
-" Make % command switch for opening/closed if-else
-runtime macros/matchit.vim
-" Set title in terminal window
-set title
+execute pathogen#infect() "For pathogen plugin
 
-set number
+set nocompatible
+set title " Set title in terminal window
+set number " line numbers
 set ruler
 set hlsearch
 set ignorecase
 set listchars=tab:▸\ ,eol:¬
 set list
 set history=1000
-
-colorscheme koehler
-
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
-set expandtab
+set mouse=nv
 set cursorline
 set incsearch
 set nobackup
 set noswapfile
+set foldmethod=indent   "fold based on indent
+set foldnestmax=2       "deepest fold is 2 levels
+set nofoldenable        "don't fold by default
+" set foldlevel=2
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set expandtab
 
-" Only do this part when compiled with support for autocommands
-if has("autocmd")
-    " Enable file type detection
-    filetype on
+filetype on " Enable file type detection
+filetype plugin on
+filetype plugin indent on
 
-    " Syntax of these languages is fussy over tabs Vs spaces
-    autocmd FileType make setlocal ts=8 sts=8 sw=8 noexpandtab
-    autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+syntax on
+runtime macros/matchit.vim " Make % command switch for opening/closed if-else
+colorscheme molokai " from https://github.com/tomasr/molokai
 
-    " Customisations based on house-style (arbitrary)
-    autocmd FileType html setlocal ts=2 sts=2 sw=2 expandtab
-    autocmd FileType css setlocal ts=2 sts=2 sw=2 expandtab
-    autocmd FileType javascript setlocal ts=4 sts=4 sw=4 noexpandtab
+" Syntax of these languages is fussy over tabs Vs spaces
+autocmd FileType make setlocal ts=8 sts=8 sw=8 noexpandtab
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
-    " Treat .rss files as XML
-    autocmd BufNewFile,BufRead *.rss setfiletype xml
-endif
+" Customisations based on house-style (arbitrary)
+autocmd FileType html setlocal ts=2 sts=2 sw=2 expandtab
+autocmd FileType css setlocal ts=2 sts=2 sw=2 expandtab
+autocmd FileType javascript setlocal ts=4 sts=4 sw=4 noexpandtab
+
+autocmd BufNewFile,BufRead *.rss setfiletype xml " Treat .rss files as XML
+autocmd BufNewFile,BufRead *.ftl setfiletype freemarker
 
 " Disable arrows to move around
 nnoremap <Up> <Nop>
@@ -52,21 +53,11 @@ inoremap <Down> <Nop>
 inoremap <Left> <Nop>
 inoremap <Right> <Nop>
 
-" Recalling commands from history (grey box at page 69 of Practical Vim by Drew Nail)
+" Recalling commands from history
 cnoremap <C-p> <Up>
 cnoremap <C-n> <Down>
 
-" For pathogen plugin
-execute pathogen#infect()
-Helptags
-syntax on
-
-filetype plugin indent on
-
-set mouse=nv
-
-" Set ctr-l to clean up last search match highlight
-nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
+nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l> " Set ctr-l to clean up last search match highlight
 
 " Shortcuts for opening file in same directory as current file
 cnoremap <expr> %% getcmdtype() == ':' ? escape(expand('%:h'), ' \').'/' : '%%'
@@ -80,14 +71,13 @@ map <leader>et :tabe %%
 nnoremap & :&&<Enter>
 xnoremap & :&&<Enter>
 
-" The opposite of J:
-:nnoremap K i<CR><Esc>
+:nnoremap K i<CR><Esc> " The opposite of J:
 
-nnoremap <F7> :SyntasticToggleMode<CR>
+" nnoremap <F7> :SyntasticToggleMode<CR>
 
 " Set ctags stuff
 " set tags+=~/Desktop/vimTags/mw_tags,~/Desktop/vimTags/ui_tags,~/Desktop/vimTags/sources_tags
-map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
+" map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 
 " Setting working directory and path for custom repo
 " cd ~/Desktop/myDir/
@@ -102,12 +92,6 @@ map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 "             \<cr>console.log();
 "             \<cr>console.log("::::::::::::	END  ::::::::::::");
 "             \<cr><esc>kkf(a
-
-"folding settings
-set foldmethod=indent   "fold based on indent
-set foldnestmax=2       "deepest fold is 2 levels
-set nofoldenable        "don't fold by default
-"set foldlevel=2
 
 " Strip trailing whitespaces
 nnoremap <silent> <F5> :call <SID>StripTrailingWhitespaces()<CR>
