@@ -4,6 +4,7 @@ set title " Set title in terminal window
 set number " line numbers
 set ruler
 set hlsearch
+set hidden " Switch to hidden buffers automatically
 set ignorecase
 set listchars=tab:▸\ ,eol:¬
 set list
