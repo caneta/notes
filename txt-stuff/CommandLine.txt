@@ -328,6 +328,7 @@ nethogs
 
 # Perform a command every n seconds:
 watch -n 1 ls -lh
+watch -n 1 'ls -l --time-style=long-iso | awk '\''{print $7, $6, $8}'\'''
 
 # Usage of screen
 screen
