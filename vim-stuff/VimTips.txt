@@ -1109,6 +1109,9 @@ inoremap <Right> <Nop>
 cd ~/.vim/bundle/plugin_to_update
 git pull
 
+# Automatize update with a little bash:
+cd ~/.vim/bundle/ ; LS="$(ls -1)" ; for DIR in ${LS[@]} ; do cd $DIR ; git pull ; cd .. ; done
+
 # pathogen by Tim Pope (https://github.com/tpope/vim-pathogen)  - - - - - - - [
 mkdir -p ~/.vim/autoload ~/.vim/bundle; \
 curl -Sso ~/.vim/autoload/pathogen.vim \
