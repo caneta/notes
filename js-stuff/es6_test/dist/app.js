@@ -48,19 +48,50 @@ var bob = {
 
 bob.printFriends();
 
-printSectionTitle("Enhanced Object Literals");
+printSectionTitle("let and const keywords");
 
-// var obj = {
-//     // __proto__
-//     __proto__: theProtoObj,
-//     // Shorthand for ‘handler: handler’
-//     handler,
-//     // Methods
-//     toString() {
-//      // Super calls
-//      return "d " + super.toString();
-//     },
-//     // Computed (dynamic) property names
-//     [ 'prop_' + (() => 42)() ]: 42
-// };
+// Variables declared with let have Block Scope, while variables declared with var have Function Scope
+function f() {
+  {
+    var x = "lalala";
+    console.log(x); // lalala
+    {
+      console.log(_x);
+      // okay, block scoped name
+      var _x = "sneaky";
+      var y = "cucucu";
+      console.log(_x);
+    }
+    // error, already declared in block
+    // let x = "inner"
+    // error, y is declared inside an inner block
+    // console.log(y)
+  }
+}
+
+f();
+
+// error, const
+// x = "foo"
+// class Point {
+// 	constructor(x, y) {
+// 		this.x = x
+// 		this.y = y
+// 	}
+// 	toString() {
+// 		return `(${this.x}, ${this.y})`
+// 		// return '(' + this.x + ', ' + this.y + ')';
+// 	}
+// }
+
+// class ColorPoint extends Point {
+// 	constructor(x, y, color) {
+// 		super(x, y)
+// 		this.color = color
+// 	}
+// 	toString() {
+// 		// return super.toString() + ' in ' + this.color;
+// 		return `${super.toString()} in ${this.color}`
+// 	}
+// }
 //# sourceMappingURL=app.js.map
