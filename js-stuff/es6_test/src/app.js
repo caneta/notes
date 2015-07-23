@@ -1,3 +1,6 @@
+import { install } from 'source-map-support';
+install();
+
 function printSectionTitle(title){
 	console.info(`
 # -----------------------------
@@ -5,6 +8,7 @@ function printSectionTitle(title){
 # -----------------------------`
 	)
 }
+
 
 // function printSeparator(){
 // 	console.log(`
@@ -45,6 +49,7 @@ var bob = {
   }
 }
 
+
 bob.printFriends()
 
 printSectionTitle('let and const keywords')
@@ -72,24 +77,16 @@ function f() {
 
 f()
 
-// class Point {
-// 	constructor(x, y) {
-// 		this.x = x
-// 		this.y = y
-// 	}
-// 	toString() {
-// 		return `(${this.x}, ${this.y})`
-// 		// return '(' + this.x + ', ' + this.y + ')';
-// 	}
-// }
+// Modules: named exports
+import { square, diag } from './lib'
+console.log(square(11))
+console.log(diag(4, 3))
 
-// class ColorPoint extends Point {
-// 	constructor(x, y, color) {
-// 		super(x, y)
-// 		this.color = color
-// 	}
-// 	toString() {
-// 		// return super.toString() + ' in ' + this.color;
-// 		return `${super.toString()} in ${this.color}`
-// 	}
-// }
+import * as lib from './lib'
+console.log(lib.square(11))
+console.log(lib.diag(4, 3))
+
+// Modules: default exports, one per module
+import printBabbala from './lib'
+printBabbala()
+

@@ -11,14 +11,15 @@ module.exports = function(grunt) {
 			},
 			dist: {
 				files: {
-					'dist/app.js': 'src/app.js'
+					'dist/app.js': 'src/app.js',
+					'dist/lib.js': 'src/lib.js'
 				}
 			}
 		},
 
 		watch: {
 			scripts: {
-				files: ['src/*.js'],
+				files: ['src/**/*.js'],
 				tasks: ['babel']
 			},
 		}
