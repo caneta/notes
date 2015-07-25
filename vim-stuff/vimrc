@@ -128,4 +128,5 @@ function <SID>StripTrailingWhitespaces()
     call cursor(l, c)
 endfunction
 
-
+" Close the current buffer, without closing the splitted window where it was:
+nnoremap <C-c> :bp\|bd #<CR>

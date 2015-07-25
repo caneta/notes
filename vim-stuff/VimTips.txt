@@ -179,6 +179,12 @@ g<c-g>
 # Go to that line (the number is the columns number retrieved:
 /^.\{248\}$
 
+# Change the current paragraph:
+cab
+
+# Close the current buffer, without closing the splitted window where it was:
+bp | bd #
+
 ###
 ### Unordered Notes
 ###
