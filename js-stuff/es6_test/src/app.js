@@ -4,9 +4,9 @@ install();
 
 // Main app functions
 function printSectionTitle(title){
-	console.info(`\n# -----------------------------`)
-	console.info(`# ${title}`)
-	console.info(`# -----------------------------`)
+  console.info(`\n# -----------------------------`)
+  console.info(`# ${title}`)
+  console.info(`# -----------------------------`)
 }
 
 // Examples modules imports

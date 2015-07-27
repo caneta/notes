@@ -33,9 +33,9 @@ var _letAndConstJs2 = _interopRequireDefault(_letAndConstJs);
 
 // Main app functions
 function printSectionTitle(title) {
-	console.info('\n# -----------------------------');
-	console.info('# ' + title);
-	console.info('# -----------------------------');
+  console.info('\n# -----------------------------');
+  console.info('# ' + title);
+  console.info('# -----------------------------');
 }
 
 printSectionTitle(_modulesJs2['default'].title);
