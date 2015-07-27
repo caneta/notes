@@ -20,5 +20,6 @@
   "jshintConfig": {
     "esnext": true,
     "asi": true
-  }
+  },
+  "private" : true
 }

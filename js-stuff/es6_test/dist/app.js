@@ -1,3 +1,6 @@
+// import polyfill from 'babel-core/polyfill'
+// require("babel")
+
 // Using source map to directly debug ES6 sources
 'use strict';
 
@@ -17,17 +20,25 @@ var _modules = require('./modules');
 
 var lib = _interopRequireWildcard(_modules);
 
+var _letAndConstJs = require('./letAndConst.js');
+
+var _letAndConstJs2 = _interopRequireDefault(_letAndConstJs);
+
 var _arrowsJs = require('./arrows.js');
 
 var _arrowsJs2 = _interopRequireDefault(_arrowsJs);
 
+var _symbolsJs = require('./symbols.js');
+
+var _symbolsJs2 = _interopRequireDefault(_symbolsJs);
+
+var _iterAndGenJs = require('./iterAndGen.js');
+
+var _iterAndGenJs2 = _interopRequireDefault(_iterAndGenJs);
+
 var _classesJs = require('./classes.js');
 
 var _classesJs2 = _interopRequireDefault(_classesJs);
-
-var _letAndConstJs = require('./letAndConst.js');
-
-var _letAndConstJs2 = _interopRequireDefault(_letAndConstJs);
 
 (0, _sourceMapSupport.install)();
 
@@ -38,15 +49,21 @@ function printSectionTitle(title) {
   console.info('# -----------------------------');
 }
 
-printSectionTitle(_modulesJs2['default'].title);
-_modulesJs2['default'].examples();
+// printSectionTitle(Modules.title)
+// Modules.examples()
 
-printSectionTitle(_letAndConstJs2['default'].title);
-_letAndConstJs2['default'].examples();
+// printSectionTitle(LetAndConst.title)
+// LetAndConst.examples()
 
-printSectionTitle(_arrowsJs2['default'].title);
-_arrowsJs2['default'].examples();
+// printSectionTitle(Arrows.title)
+// Arrows.examples()
 
-printSectionTitle(_classesJs2['default'].title);
-_classesJs2['default'].examples();
+printSectionTitle(_symbolsJs2['default'].title);
+_symbolsJs2['default'].examples();
+
+// printSectionTitle(IterAndGen.title)
+// IterAndGen.examples()
+
+// printSectionTitle(Classes.title)
+// Classes.examples()
 //# sourceMappingURL=app.js.map
