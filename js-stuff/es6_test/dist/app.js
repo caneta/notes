@@ -1,46 +1,21 @@
+// Using source map to directly debug ES6 sources
 'use strict';
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj['default'] = obj; return newObj; } }
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
 var _sourceMapSupport = require('source-map-support');
 
-// printSectionTitle('let and const keywords')
+// Examples modules imports
 
-// // Variables declared with let have Block Scope, while variables declared with var have Function Scope
-// function f() {
-//   {
-//     let x = "lalala"
-// 		console.log(x) // lalala
-//     {
-// 			console.log(x)
-//       // okay, block scoped name
-//       const x = "sneaky"
-//       const y = "cucucu"
-// 			console.log(x)
-//       // error, const
-//       // x = "foo"
-//     }
-//     // error, already declared in block
-//     // let x = "inner"
-//     // error, y is declared inside an inner block
-// 		// console.log(y)
-//   }
-// }
+var _modulesJs = require('./modules.js');
 
-// f()
+var _modulesJs2 = _interopRequireDefault(_modulesJs);
 
-// // Modules: named exports
-// import { square, diag } from './lib'
-// console.log(square(11))
-// console.log(diag(4, 3))
+var _modules = require('./modules');
 
-// import * as lib from './lib'
-// console.log(lib.square(11))
-// console.log(lib.diag(4, 3))
-
-// // Modules: default exports, one per module
-// import printBabbala from './lib'
-// printBabbala()
+var lib = _interopRequireWildcard(_modules);
 
 var _arrowsJs = require('./arrows.js');
 
@@ -50,13 +25,24 @@ var _classesJs = require('./classes.js');
 
 var _classesJs2 = _interopRequireDefault(_classesJs);
 
+var _letAndConstJs = require('./letAndConst.js');
+
+var _letAndConstJs2 = _interopRequireDefault(_letAndConstJs);
+
 (0, _sourceMapSupport.install)();
 
+// Main app functions
 function printSectionTitle(title) {
 	console.info('\n# -----------------------------');
 	console.info('# ' + title);
 	console.info('# -----------------------------');
 }
+
+printSectionTitle(_modulesJs2['default'].title);
+_modulesJs2['default'].examples();
+
+printSectionTitle(_letAndConstJs2['default'].title);
+_letAndConstJs2['default'].examples();
 
 printSectionTitle(_arrowsJs2['default'].title);
 _arrowsJs2['default'].examples();
