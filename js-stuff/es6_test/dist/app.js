@@ -2,98 +2,65 @@
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj['default'] = obj; return newObj; } }
-
 var _sourceMapSupport = require('source-map-support');
 
-// Modules: named exports
+// printSectionTitle('let and const keywords')
 
-var _lib = require('./lib');
+// // Variables declared with let have Block Scope, while variables declared with var have Function Scope
+// function f() {
+//   {
+//     let x = "lalala"
+// 		console.log(x) // lalala
+//     {
+// 			console.log(x)
+//       // okay, block scoped name
+//       const x = "sneaky"
+//       const y = "cucucu"
+// 			console.log(x)
+//       // error, const
+//       // x = "foo"
+//     }
+//     // error, already declared in block
+//     // let x = "inner"
+//     // error, y is declared inside an inner block
+// 		// console.log(y)
+//   }
+// }
 
-var lib = _interopRequireWildcard(_lib);
+// f()
 
-// Modules: default exports, one per module
+// // Modules: named exports
+// import { square, diag } from './lib'
+// console.log(square(11))
+// console.log(diag(4, 3))
 
-var _lib2 = _interopRequireDefault(_lib);
+// import * as lib from './lib'
+// console.log(lib.square(11))
+// console.log(lib.diag(4, 3))
+
+// // Modules: default exports, one per module
+// import printBabbala from './lib'
+// printBabbala()
+
+var _arrowsJs = require('./arrows.js');
+
+var _arrowsJs2 = _interopRequireDefault(_arrowsJs);
+
+var _classesJs = require('./classes.js');
+
+var _classesJs2 = _interopRequireDefault(_classesJs);
 
 (0, _sourceMapSupport.install)();
 
 function printSectionTitle(title) {
-  console.info('\n# -----------------------------\n# ' + title + '\n# -----------------------------');
+	console.info('\n# -----------------------------');
+	console.info('# ' + title);
+	console.info('# -----------------------------');
 }
 
-// function printSeparator(){
-// 	console.log(`
-// - - - - - - - - - - - - - - - -`
-// 	)
-// }
+printSectionTitle(_arrowsJs2['default'].title);
+_arrowsJs2['default'].examples();
 
-printSectionTitle('Fat Arrows');
-
-// Expression bodies
-var evens = [0, 2, 4, 6, 8, 10],
-    odds = evens.map(function (v) {
-  return v + 1;
-}),
-    nums = evens.map(function (v, i) {
-  return v + i;
-}),
-    pairs = evens.map(function (v) {
-  return { even: v, odd: v + 1 };
-});
-
-// Statement bodies
-var fives = [];
-nums.forEach(function (v) {
-  if (v % 5 === 0) fives.push(v);
-});
-
-// Multiline strings and string interpolation
-console.log('\nevens: ' + evens + ' \nodds: ' + odds + '\nnums: ' + nums + '\nfives: ' + fives + '\n');
-
-// Lexical this
-var bob = {
-  _name: 'Bob',
-  _friends: ['Anne', 'Tim', 'Jack'],
-  printFriends: function printFriends() {
-    var _this = this;
-
-    this._friends.forEach(function (f) {
-      return console.log(_this._name + ' knows ' + f);
-    });
-  }
-};
-
-bob.printFriends();
-
-printSectionTitle('let and const keywords');
-
-// Variables declared with let have Block Scope, while variables declared with var have Function Scope
-function f() {
-  {
-    var x = 'lalala';
-    console.log(x); // lalala
-    {
-      console.log(_x);
-      // okay, block scoped name
-      var _x = 'sneaky';
-      var y = 'cucucu';
-      console.log(_x);
-    }
-    // error, already declared in block
-    // let x = "inner"
-    // error, y is declared inside an inner block
-    // console.log(y)
-  }
-}
-
-f();
-console.log((0, _lib.square)(11));
-console.log((0, _lib.diag)(4, 3));
-
-console.log(lib.square(11));
-console.log(lib.diag(4, 3));
-(0, _lib2['default'])();
-// error, const
-// x = "foo"
+printSectionTitle(_classesJs2['default'].title);
+_classesJs2['default'].examples();
 //# sourceMappingURL=app.js.map
