@@ -1,5 +1,4 @@
-// import polyfill from 'babel-core/polyfill'
-// require("babel")
+require("grunt-babel/node_modules/babel-core/polyfill")
 
 // Using source map to directly debug ES6 sources
 import { install } from 'source-map-support'

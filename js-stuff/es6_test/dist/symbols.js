@@ -46,7 +46,10 @@ var Symbols = (function () {
       console.log(Object.getOwnPropertyNames(obj)); // ['enum', 'nonEnum']
 
       // Object.getOwnPropertySymbols() ignores string-valued property keys:
-      console.log(Object.getOwnPropertySymbols(obj));
+      console.log(Object.getOwnPropertySymbols(obj)); // [Symbol(my_key)]
+
+      // Reflect.ownKeys() considers all kinds of keys:
+      console.log(Reflect.ownKeys(obj));
     }
   }, {
     key: 'title',
@@ -60,8 +63,5 @@ var Symbols = (function () {
 
 exports['default'] = Symbols;
 module.exports = exports['default'];
-// [Symbol(my_key)]
-
-// Reflect.ownKeys() considers all kinds of keys:
-// Reflect.ownKeys(obj) // [Symbol(my_key), 'enum', 'nonEnum']
+// [Symbol(my_key), 'enum', 'nonEnum']
 //# sourceMappingURL=symbols.js.map

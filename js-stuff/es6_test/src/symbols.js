@@ -39,6 +39,6 @@ export default class Symbols {
     console.log(Object.getOwnPropertySymbols(obj)) // [Symbol(my_key)]
 
     // Reflect.ownKeys() considers all kinds of keys:
-    // Reflect.ownKeys(obj) // [Symbol(my_key), 'enum', 'nonEnum']
+    console.log(Reflect.ownKeys(obj)) // [Symbol(my_key), 'enum', 'nonEnum']
   }
 }
