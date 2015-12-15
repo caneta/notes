@@ -573,6 +573,9 @@ find . -type f -name '*.jpg' -print0 | xargs -0 mogrify -scale 500x375 # To put 
 # Modify PDF page size with imagemagick (convert command):
 convert -page a3 infile.pdf -page a4 outfile.pdf
 
+# Creating a vertical sprite with imagemagick, with one px within every image
+montage -background transparent -tile 1x -geometry +0+1 home.png settings.png search.png header-controls.png
+
 # Get original timestamp of a picture with exiftool
 exiftool picture.jpg | grep -i 'Date/Time Original'
 
