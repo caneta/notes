@@ -576,6 +576,9 @@ convert -page a3 infile.pdf -page a4 outfile.pdf
 # Creating a vertical sprite with imagemagick, with one px within every image
 montage -background transparent -tile 1x -geometry +0+1 home.png settings.png search.png header-controls.png
 
+# Scaling a png to a desired size:
+convert it_IT.png -resize 26x26 it_IT.png
+
 # Get original timestamp of a picture with exiftool
 exiftool picture.jpg | grep -i 'Date/Time Original'
 
