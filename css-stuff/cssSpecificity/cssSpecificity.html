@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Css Specificity Example</title>
+  </head>
+
+  <style type="text/css" media="screen">
+
+    /* Specificity: 0, 1, 1, 3 */
+    ul#nav li.active a { color: red; }
+
+    /* Specificity: 0, 1, 0, 3 */
+    ul#nav li a { color: green; }
+
+    /* Specificity: 0, 0, 0, 4 */
+    body ul li a { color: gold; }
+
+    /* Specificity: 0, 1, 0, 0 */
+    #nav { color: cyan; }
+
+    /* Specificity: 0, 0, 0, 2 */
+    ul li { color: lightgreen; }
+
+    /* Specificity: 0, 0, 1, 3 */
+    ul li.active a { color: silver; }
+
+    /* Specificity: 0, 0, 1, 2 */
+    li.active a { color: blue; }
+
+    /* Specificity: 0, 0, 0, 1 */
+    a { color: black; }
+
+  </style>
+
+  <body>
+    <ul id="nav">
+      <li>
+        <a href="#">Whiskey and Ginger Ale</a>
+      </li>
+      <li class="active">
+        <a href="#">Wheat Beer</a>
+      </li>
+     <li>
+       <a href="#">Mint Julip</a>
+     </li>
+    </ul>
+  </body>
+</html>
