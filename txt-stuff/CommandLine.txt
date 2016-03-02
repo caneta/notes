@@ -591,6 +591,9 @@ exiftool -Orientation=6 -overwrite_original -n picture.jpg
 # Rotate 270 degrees clockwise a picture with exiftool:
 exiftool -Orientation=8 -overwrite_original -n picture.jpg
 
+# Rotate 180 degrees a picture with imagemagick convert:
+convert arrow-up.png -rotate 180 arrow-down.png
+
 # Add a delay to connection:
 sudo tc qdisc add dev eth0 root netem delay 1000ms
 
