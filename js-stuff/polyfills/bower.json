@@ -1,0 +1,32 @@
+{
+  "name": "polyfills",
+  "homepage": "https://github.com/caneta/notes",
+  "authors": [
+    "Alessandro Candini"
+  ],
+  "description": "Polyfills tests for older browsers",
+  "main": "index.html",
+  "moduleType": [],
+  "keywords": [
+    "polyfill",
+    "ie7",
+    "ie8",
+    "ie9",
+    "ie10",
+    "ie11"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "html5shiv": "~3.7.3"
+  },
+  "dependencies": {
+    "jquery": "1.12.2"
+  }
+}
