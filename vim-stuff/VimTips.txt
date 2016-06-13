@@ -1119,9 +1119,8 @@ git pull
 cd ~/.vim/bundle/ ; LS="$(ls -1)" ; for DIR in ${LS[@]} ; do cd $DIR ; git pull ; cd .. ; done
 
 # pathogen by Tim Pope (https://github.com/tpope/vim-pathogen)  - - - - - - - [
-mkdir -p ~/.vim/autoload ~/.vim/bundle; \
-curl -Sso ~/.vim/autoload/pathogen.vim \
-    https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim
+mkdir -p ~/.vim/autoload ~/.vim/bundle
+curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
 
 # Put in your .vimrc file the following:
 call pathogen#infect()
