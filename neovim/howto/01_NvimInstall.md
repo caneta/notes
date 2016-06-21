@@ -3,7 +3,9 @@
     ```
     sudo add-apt-repository ppa:neovim-ppa/unstable
     ```
+
     If this doesn't work, add manaually the following to **/etc/apt/sources.list**
+
     ```
     deb http://ppa.launchpad.net/neovim-ppa/unstable/ubuntu precise main
     deb-src http://ppa.launchpad.net/neovim-ppa/unstable/ubuntu precise main
