@@ -10,9 +10,11 @@
     deb http://ppa.launchpad.net/neovim-ppa/unstable/ubuntu precise main
     deb-src http://ppa.launchpad.net/neovim-ppa/unstable/ubuntu precise main
     ```
+
 * Install
     ```
     sudo apt-get update
     sudo apt-get install neovim
     ```
+
 * The configuration file for Neovim is **~/.config/nvim/init.vim**
