@@ -1,7 +1,7 @@
 " Look and feel
-let base16colorspace=256    " Access colors present in 256 colorspace
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+set termguicolors " Use 24 bit colors
 set background=dark         " Set colorscheme dark variant
-colorscheme base16-bright
 set title                   " Set title in terminal window
 set number                  " Set line numbers
 set list                    " Display unprintable characters
@@ -38,10 +38,17 @@ nnoremap K i<CR><Esc>|                             " The opposite of J: split si
 vnoremap <leader>c "+yh|        " Visual mode: copy in the system clipboard with \c
 nnoremap <leader>v "+p|         " Normal mode: paste from the system clipboard with \v
 inoremap <leader>v <C-r><C-p>+| " Insert mode: paste from the system clipboard with \v
+set clipboard+=unnamedplus
 
 " ======================================================================
 " Plugins with vim-plug
 call plug#begin('~/.config/nvim/plugins')
+" Colorschemes
+Plug 'morhetz/gruvbox'
+Plug 'tomasr/molokai'
+" Fonts
+Plug 'ryanoasis/vim-devicons'
+" Normal Plugins
 Plug 'vim-airline/vim-airline'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
@@ -51,6 +58,12 @@ Plug 'tpope/vim-fugitive'
 Plug 'neomake/neomake'
 call plug#end()
 
+colorscheme molokai " Must to be put under vim-plug stuff
+
 " Neomake conf
 autocmd! BufWritePost,BufEnter * Neomake " To run neomake automatically at file save
 
+" Vim airline
+let g:airline_powerline_fonts=1 " Use powerline fonts, installed with nerd fonts
+let g:airline#extensions#tabline#enabled=1 " Set enhanced tabline
+let g:airline#extensions#tabline#fnamemod=':t' " Filename format: tail of the filename

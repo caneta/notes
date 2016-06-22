@@ -1,5 +1,5 @@
 # Neovim installation on Ubuntu 12.04
-* Add repository
+* Add repository reference [here](https://launchpad.net/~neovim-ppa/+archive/ubuntu/unstable)
     ```
     sudo add-apt-repository ppa:neovim-ppa/unstable
     ```
