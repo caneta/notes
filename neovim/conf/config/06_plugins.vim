@@ -1,9 +1,12 @@
-" Neomake conf
+" Neomake ===================================================
 autocmd! BufWritePost,BufEnter * Neomake " To run neomake automatically at file save
+
+" how to display messages
 let g:neomake_warning_sign = { 'text': '⚠️' }
 let g:neomake_error_sign = { 'text': '❌' }
 let g:neomake_style_warning_sign = { 'text': '💩' }
 let g:neomake_style_error_sign = { 'text': '⁉️' }
+
 
 " vim-airline
 let g:airline_theme='oceanicnext'
@@ -27,3 +30,4 @@ autocmd CompleteDone * pclose! " Automatically close scratch window after select
 " deoplete-ternjs
 let g:tern_request_timeout=1
 " let g:tern_show_signature_in_pum=0  " This do disable full signature type on autocomplete
+

@@ -7,27 +7,37 @@ endfunction
 " Using vim-plug as plugin manager
 call plug#begin('~/.config/nvim/plugins')
 
-" Colorschemes
-Plug 'morhetz/gruvbox'
-Plug 'tomasr/molokai'
-Plug 'mhartington/oceanic-next'
+" Look and feel
+Plug 'mhinz/vim-startify'       " Fancy start screen
+Plug 'morhetz/gruvbox'          " Retro groove color scheme
+Plug 'tomasr/molokai'           " Monokai inspired color scheme
+Plug 'mhartington/oceanic-next' " Sublime Text inspired color scheme
+Plug 'ryanoasis/vim-devicons'   " File type icons to many plugins such as NERDTree, vim-airline, etc
+Plug 'vim-airline/vim-airline'  " Light status bar and tabline
+Plug 'Yggdroot/indentLine'      " Display indentation levels with vertical lines
+Plug 'chrisbra/Colorizer'       " Color the background of a CSS colorname (Hex, RGBA, etc)
 
-" Fonts
-Plug 'ryanoasis/vim-devicons'
+" Syntax specific
+Plug 'andreshazard/vim-freemarker'
 
-" Other
-Plug 'vim-airline/vim-airline'
+" Utilities
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-fugitive'
-Plug 'neomake/neomake'
-Plug 'Raimondi/delimitMate'
-Plug 'ludovicchabant/vim-gutentags'
-Plug 'chrisbra/Colorizer'
-Plug 'mattn/emmet-vim'
+Plug 'tpope/vim-vinegar'    " Defines some netrw behaviours and mappings
+Plug 'godlygeek/tabular'    " Text filtering and alignment
+
+
+" Autocompletion
 Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
+Plug 'Raimondi/delimitMate'
+Plug 'mattn/emmet-vim'
+
+" Linting stuff
+Plug 'ludovicchabant/vim-gutentags'
+Plug 'neomake/neomake'
 Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
 
 call plug#end()
