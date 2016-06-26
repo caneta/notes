@@ -1,5 +1,4 @@
 colorscheme OceanicNext
-let $NVIM_TUI_ENABLE_TRUE_COLOR=1   " Use 24 bit colors
 set termguicolors                   " Use 24 bit colors
 set background=dark                 " Set colorscheme dark variant
 set list                            " Display unprintable characters
