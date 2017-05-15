@@ -654,3 +654,18 @@ sudo apt-get install oracle-java8-installer
 
 # Downgrade an mp4 file with mencoder:
 mencoder SampleVideo_1080x720_1mb.mp4 -vf scale=135:60 -ovc lavc -nosound -o SampleVideo_135x60.mp4
+
+# Perform a login as root with su
+su -
+
+# Perform a login as root with sudo
+sudo -i
+
+# Perform a login as myuser with su
+su - myuser
+
+# Perform a login as myuser with su
+sudo -i -u myuser
+
+# Become root using sudo, so with your current user password
+sudo su -
