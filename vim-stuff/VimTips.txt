@@ -284,12 +284,13 @@ yt,
 ga
 
 # Insert accented vowels (with decimal values and with digraphs):
-à --> <C-v>224 --> <C-k>a! --> città --> (grave accent)
-è --> <C-v>232 --> <C-k>e! --> cioè ---> (grave accent, opened sound)
-é --> <C-v>233 --> <C-k>e' --> perché -> (acute accent, closed sound)
-ì --> <C-v>236 --> <C-k>i! --> così ---> (grave accent)
-ò --> <C-v>242 --> <C-k>o! --> perciò -> (grave accent)
-ù --> <C-v>249 --> <C-k>u! --> più ----> (grave accent)
+à --> <C-v>224 --> <C-k>a! --> città -----> (grave accent)
+è --> <C-v>232 --> <C-k>e! --> cioè, è ---> (grave accent, opened sound)
+é --> <C-v>233 --> <C-k>e' --> perché ----> (acute accent, closed sound)
+ì --> <C-v>236 --> <C-k>i! --> così ------> (grave accent)
+ò --> <C-v>242 --> <C-k>o! --> perciò ----> (grave accent)
+ù --> <C-v>249 --> <C-k>u! --> più -------> (grave accent)
+È --> <C-v>200 --> <C-k>E! --> È ---------> (grave accent)
 
 # Some example digraph:
 ␣ --> Open Box -----------------------------> <C-k>Vs
