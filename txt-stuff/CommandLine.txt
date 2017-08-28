@@ -669,3 +669,6 @@ sudo -i -u myuser
 
 # Become root using sudo, so with your current user password
 sudo su -
+
+# Silver Searcher (ag): search for filenames matching pattern
+ag 'mySearchStr' -G '\.ftl|\.jsp'
