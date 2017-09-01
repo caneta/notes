@@ -672,3 +672,6 @@ sudo su -
 
 # Silver Searcher (ag): search for filenames matching pattern
 ag 'mySearchStr' -G '\.ftl|\.jsp'
+
+# Converto a Markdown file to PDF using pandoc:
+pandoc myDoc.md -s -o myDoc.pdf
