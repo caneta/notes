@@ -570,9 +570,6 @@ convert img_01.jpg img_02.jpg img_03.jpg my_doc.pdf
 find . -type f -name '*.jpg' -print0 | xargs -0 mogrify -scale 1280x960
 find . -type f -name '*.jpg' -print0 | xargs -0 mogrify -scale 500x375 # To put 4 picures in a A4
 
-# Resize a picture of a defined size
-file ./*.JPG | ag 4000x3000 | awk '{print $1}' | tr -d ':\n' | xargs -0 mogrify -scale 1280x960
-
 # Modify PDF page size with imagemagick (convert command):
 convert -page a3 infile.pdf -page a4 outfile.pdf
 
