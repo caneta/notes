@@ -494,6 +494,9 @@ q:
 # (works only if netrw was opened with :e.)
 <C-^>
 
+# Close the current netrw explorer:
+:Rex
+
 # Open a file explorer with the netrw vim plugin in splitted windows:
 :Sex
 :Vex
@@ -509,6 +512,18 @@ R
 
 # To delete a file open a netrw window and type:
 D
+
+# To copy a file in the current directory with netrw:
+* Enter netrw with :Ex
+* Switch to visualization with directories typing "i"
+* Be sure to be in the current directory with :pwd
+* If not go to it with :lcd ${currentDirShowedByNetrw}
+* Go on the current directory "./"
+* Mark target directory typing mt
+* Go on the file to copy
+* Mark target file with mf
+* Copy it typing mc
+* You will be prompted to modify new file name
 
 # Echoes the name and status of the current file:
 <C-g>
