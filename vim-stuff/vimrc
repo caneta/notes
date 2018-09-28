@@ -1,156 +1,51 @@
-""" General settings -----------------------
-set nocompatible
-set title " Set title in terminal window
-set number " line numbers
-set ruler
-set hidden
-set hlsearch
-set ignorecase
-set listchars=tab:▸\ ,eol:¬
-set list
-set history=1000
-set mouse=nv
-set cursorline
-set incsearch
-set ic
-set nobackup
-set noswapfile
-set foldmethod=indent   "fold based on indent
-set foldnestmax=2       "deepest fold is 2 levels
-set nofoldenable        "don't fold by default
-" set foldlevel=2
-set tabstop=2
-set softtabstop=2
-set shiftwidth=2
-set expandtab
-set autoread " auto reload file if modified outside vim
+" Some Neovim defaults
+set autoindent                 " Copy indent from current line when starting a new line
+set autoread                   " Auto reload file if modified outside Vim
+set backspace=indent,eol,start " Allow backspacing over autoindent, over line breaks (join lines) and over the start of insert
+set belloff=all                " Never ring the system bell
+set encoding=utf-8             " Vim defaults to latin1 or value from $LANG
+set fillchars=                 " Vim defaults to 'vert:│,fold:·'
+set formatoptions=tcqj         " Automation of formatting
+set history=10000              " Set history length (this is the maximum possible value)
+set hlsearch                   " Highlight searched strings
+set incsearch                  " Start highlighting strings at every char type
+set laststatus=2               "Statusline is always shown
+set nocompatible               " No compatible with the old Vi
+set ruler                      " Show line and column number
+set showcmd                    " Show (partial) command in the last line of the screen
+set sidescroll=1               " Minimum number of columns to scroll horizontally
+set smarttab                   " With a <Tab> in front of a line, inserts blanks according to 'shiftwidth'
+set tabpagemax=50              " Max num of tab pages to be opened by :tab all or -p
+set wildmenu                   " Command line completion operates in an enhanced mode
+set showmatch                  " Blink on matching brackets
+set cursorline                 " Highlight current cursor line
 
-colorscheme molokai " from https://github.com/tomasr/molokai
+" General
+set number                 " Set line numbers
+set title                  " Set title in terminal window
+set clipboard+=unnamedplus " to put yanked lines into clipboard
+set hidden                 " Switching to another buffer, it hides already opened and modified buffers instead of closing them
+set nobackup               " Do not produce backup files with ~ postfix
+set iskeyword+=\-          " Makes dashed variables like $my-variable, available for autocompletion
+set updatetime=100         " If nothing happens on screen, after how many ms the swap file is written to disk (default is 4000)
+filetype plugin indent on  " Detect file types, load its plugin and apply its indentation
+syntax enable              " Switch on syntax highlighting
 
-" For pathogen plugin
-execute pathogen#infect()
+" Indentation
+set smartindent   " Do smart autoindenting when starting a new line
+set ignorecase    " Our search will be case insensitive by default: without this, set smartcase does not work!
+set smartcase     " Our search will be case sensitive if it contains an uppercase letter
+set expandtab     " When pressing <Tab> use spaces instead
+set softtabstop=2 " How many spaces instead of a <Tab>
+set shiftwidth=2  " How many spaces with autoindent
+set tabstop=2     " Number of spaces used to visually represent a <Tab>
 
-syntax on
-filetype on " Enable file type detection
-filetype plugin on
-filetype plugin indent on
+" Folding
+set foldmethod=indent " fold based on indent
+set nofoldenable      " no fold by default
+set foldcolumn=2      " show columns of folding representation at a side of window
+set foldlevel=1       " folds with a higher level will be closed
+set foldnestmax=2     " deepest fold nesting
 
-runtime macros/matchit.vim " Make % command switch for opening/closed if-else
-
-
-" Syntax of these languages is fussy over tabs Vs spaces
-autocmd FileType make setlocal ts=8 sts=8 sw=8 noexpandtab
-autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
-
-" Customisations based on house-style (arbitrary)
-autocmd FileType html setlocal ts=2 sts=2 sw=2 expandtab
-autocmd FileType css setlocal ts=2 sts=2 sw=2 expandtab
-autocmd FileType scss setlocal ts=2 sts=2 sw=2 expandtab
-autocmd FileType javascript setlocal ts=2 sts=2 sw=2 expandtab
-autocmd FileType jade setlocal ts=2 sts=2 sw=2 expandtab
-autocmd FileType jsp setlocal ts=2 sts=2 sw=2 expandtab
-
-autocmd BufNewFile,BufRead *.rss setfiletype xml " Treat .rss files as XML
-autocmd BufNewFile,BufRead *.ftl setfiletype freemarker
-
-
-""" Remaps -----------------------
-" Disable arrows to move around
-nnoremap <Up> <Nop>
-nnoremap <Down> <Nop>
-nnoremap <Left> <Nop>
-nnoremap <Right> <Nop>
-inoremap <Up> <Nop>
-inoremap <Down> <Nop>
-inoremap <Left> <Nop>
-inoremap <Right> <Nop>
-
-" Recalling commands from history
-cnoremap <C-p> <Up>
-cnoremap <C-n> <Down>
-
-nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l> " Set ctr-l to clean up last search match highlight
-
-" Shortcuts for opening file in same directory as current file
-cnoremap <expr> %% getcmdtype() == ':' ? escape(expand('%:h'), ' \').'/' : '%%'
-cnoremap %% <C-R>=expand('%:h').'/'<cr>
-map <leader>ew :e %%
-map <leader>es :sp %%
-map <leader>ev :vsp %%
-map <leader>et :tabe %%
-
-" Fix the & command in normal+visual modes
-nnoremap & :&&<Enter>
-xnoremap & :&&<Enter>
-
-nnoremap K i<CR><Esc> " The opposite of J:
-
-""" Plugin settings -----------------------
-" netrw: avoiding 'Hit enter to continue' message over scp
-let g:netrw_silent=1
-
-" vim-commentary:
-autocmd FileType sql set commentstring=--\ %s
-autocmd FileType jsp set commentstring=<%--\ %s\ --%>
-autocmd FileType freemarker set commentstring=<#--\ %s\ -->
-
-" syntastic: JsHint as JavaScript linter (with Node Version Manager too!)
-if $PATH !~ "\.nvm"
-    let $PATH="/home/candini/.nvm/versions/node/v0.12.7/bin:" . $PATH
-endif
-nnoremap <F7> :SyntasticToggleMode<CR>
-let g:syntastic_javascript_checkers = ['jshint']
-
-" airline status bar
-set laststatus=2
-let g:airline_powerline_fonts=1
-let g:airline#extensions#tabline#fnamemod = ':t'
-
-" webdevicons: icons for file types in airline status bar
-set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Plus\ Nerd\ File\ Types\ 11
-let g:webdevicons_enable_nerdtree = 0
-
-" vim-json: keep visualizing quotation marks
-let g:vim_json_syntax_conceal = 0
-
-""" Function definitions -----------------------
-function! <SID>StripTrailingWhitespaces()
-    " Preparation: save last search, and cursor position.
-    let _s=@/
-    let l = line(".")
-    let c = col(".")
-    " Do the business:
-    %s/\s\+$//e
-    " Clean up: restore previous search history, and cursor position
-    let @/=_s
-    call cursor(l, c)
-endfunction
-
-" Strip trailing whitespaces
-nnoremap <silent> <F5> :call <SID>StripTrailingWhitespaces()<CR>
-
-" Using the Silver Searcher
-if executable('ag')
-  " Note we extract the column as well as the file and line number
-  set grepprg=ag\ --nogroup\ --nocolor\ --column
-  set grepformat=%f:%l:%c%m
-endif
-
-" Remapping keys to navigate the quickfix list
-" nmap <silent> <RIGHT> :cnext<CR>
-" nmap <silent> <LEFT> :cprev<CR>
-
-" bind m to grep word under cursor
-" nnoremap m :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
-
-" Emmet custom snippets
-let g:user_emmet_settings = webapi#json#decode(join(readfile(expand('~/.snippets_custom.json')), "\n"))
-
-" Trigger configuration. Do not use <tab> if you use
-" https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<c-e>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-
-" If you want :UltiSnipsEdit to split your window.
-let g:UltiSnipsEditSplit="vertical"
+" Autocompletion
+set omnifunc=syntaxcomplete#Complete " Omnifunc autocompletion
