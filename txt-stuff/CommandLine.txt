@@ -673,5 +673,9 @@ sudo su -
 # Silver Searcher (ag): search for filenames matching pattern
 ag 'mySearchStr' -G '\.ftl|\.jsp'
 
-# Converto a Markdown file to PDF using pandoc:
+# Convert a Markdown file to PDF using pandoc:
 pandoc myDoc.md -s -o myDoc.pdf
+
+# Convert a Markdown file into PDF (passing through HTML, CSS taken from https://github.com/otsaloma/markdown-css):
+pandoc -s -c markdown.css -f markdown -t html doc.md > doc.html
+wkhtmltopdf --title 'My Title' --footer-center '- [page] of [toPage] -' doc.html doc.pdf
