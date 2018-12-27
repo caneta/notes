@@ -679,3 +679,7 @@ pandoc myDoc.md -s -o myDoc.pdf
 # Convert a Markdown file into PDF (passing through HTML, CSS taken from https://github.com/otsaloma/markdown-css):
 pandoc -s -c markdown.css -f markdown -t html doc.md > doc.html
 wkhtmltopdf --title 'My Title' --footer-center '- [page] of [toPage] -' doc.html doc.pdf
+
+# Reduce size of an mp4 video with bitrate of 16000k and cut it from 0 to 30 seconds:
+ffmpeg -i originalBigVideo.mp4 -b 2123k smallerVideo.mp4
+ffmpeg -ss 00:00:00 -i smallerVideo.mp4 -t 00:00:28 -vcodec copy -acodec copy smallerVideo_only30seconds.mp4
